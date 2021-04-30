@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : content01
+ Source Server         : jur-jt
  Source Server Type    : MySQL
- Source Server Version : 80022
+ Source Server Version : 80020
  Source Host           : localhost:3306
  Source Schema         : jurjt
 
  Target Server Type    : MySQL
- Target Server Version : 80022
+ Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 28/04/2021 19:52:38
+ Date: 30/04/2021 17:34:08
 */
 
 SET NAMES utf8mb4;
@@ -30,23 +30,27 @@ CREATE TABLE `admin_menu`  (
   `component` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `parent_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_menu
 -- ----------------------------
-INSERT INTO `admin_menu` VALUES (1, '/admin', 'AdminIndex', '首页', 'el-icon-s-home', 'AdminIndex', 0);
-INSERT INTO `admin_menu` VALUES (2, '/admin/dashboard', 'DashboardAdmin', '首页职位区', NULL, 'dashboard/admin/index', 1);
-INSERT INTO `admin_menu` VALUES (3, '/admin', 'User', '用户管理', 'el-icon-user', 'AdminIndex', 0);
-INSERT INTO `admin_menu` VALUES (4, '/admin', 'Content', '职位管理', 'el-icon-tickets', 'AdminIndex', 0);
-INSERT INTO `admin_menu` VALUES (5, '/admin', 'System', '积分管理', 'el-icon-s-tools', 'AdminIndex', 0);
-INSERT INTO `admin_menu` VALUES (6, '/admin/user/profile', 'Profile', '用户信息', NULL, 'user/UserProfile', 3);
-INSERT INTO `admin_menu` VALUES (7, '/admin/user/role', 'Role', '角色配置', NULL, 'user/Role', 3);
-INSERT INTO `admin_menu` VALUES (8, '/admin/content/book', 'BookManagement', '积分设置', NULL, 'content/BookManagement', 5);
-INSERT INTO `admin_menu` VALUES (9, '/admin/content/banner', 'BannerManagement', '积分记录', NULL, 'content/BannerManagement', 5);
-INSERT INTO `admin_menu` VALUES (10, '/admin/content/article', 'ArticleManagement', '简历上传', NULL, 'content/ArticleManagement', 0);
-INSERT INTO `admin_menu` VALUES (17, NULL, NULL, '我的推荐', NULL, NULL, 0);
-INSERT INTO `admin_menu` VALUES (18, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `admin_menu` VALUES (1, '/index', 'AdminIndex', '首页', 'el-icon-s-home', 'layer', 0);
+INSERT INTO `admin_menu` VALUES (2, '/index/positionList', 'DashboardAdmin', '首页职位区', NULL, 'positionList', 1);
+INSERT INTO `admin_menu` VALUES (3, '/userManagement', 'User', '用户管理', 'el-icon-user', 'layer', 0);
+INSERT INTO `admin_menu` VALUES (4, '/index/NewPosition', 'Content', '职位管理', 'el-icon-tickets', 'layer', 0);
+INSERT INTO `admin_menu` VALUES (5, '/admin', 'System', '积分管理', 'el-icon-s-tools', 'layer', 0);
+INSERT INTO `admin_menu` VALUES (6, '/index/userManagement', 'Profile', '用户信息', NULL, 'userManagement', 3);
+INSERT INTO `admin_menu` VALUES (7, '/index/roleConfiguration', 'Role', '角色配置', NULL, 'roleConfiguration', 3);
+INSERT INTO `admin_menu` VALUES (8, '/index/pointsExchange', 'BookManagement', '积分设置', NULL, 'pointsExchange', 5);
+INSERT INTO `admin_menu` VALUES (9, '/index/pointsManagement', 'BannerManagement', '积分记录', NULL, 'pointsManagement', 5);
+INSERT INTO `admin_menu` VALUES (10, '/ResumeUpload', 'ArticleManagement', '简历上传', 'el-icon-s-order', 'layer', 0);
+INSERT INTO `admin_menu` VALUES (17, '/index/myRecommend', 'myRecommend', '我的推荐', 'el-icon-s-claim', 'layer', 0);
+INSERT INTO `admin_menu` VALUES (18, '/index/PublishedPosition', 'PublishedPosition', '我发布的职位', NULL, 'PublishedPosition', 4);
+INSERT INTO `admin_menu` VALUES (19, '/ResumeUpload', 'ResumeUpload', '简历上传', '', 'ResumeUpload', 10);
+INSERT INTO `admin_menu` VALUES (20, '/index/myRecommend', 'myRecommend', '我的推荐', NULL, 'myRecommend', 18);
+INSERT INTO `admin_menu` VALUES (21, '/talentPool', 'talentPool', '人才管理', 'el-icon-folder-opened', 'layer', 0);
+INSERT INTO `admin_menu` VALUES (22, '/talentPool/talentInfoList', 'talentPool', '人才库', '', 'talentPool', 21);
 
 -- ----------------------------
 -- Table structure for admin_permission
@@ -58,7 +62,7 @@ CREATE TABLE `admin_permission`  (
   `desc_` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_permission
@@ -77,15 +81,15 @@ CREATE TABLE `admin_role`  (
   `name_zh` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '中文名',
   `enabled` tinyint(1) NULL DEFAULT NULL COMMENT '是否禁用',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_role
 -- ----------------------------
 INSERT INTO `admin_role` VALUES (1, 'sysAdmin', '系统管理员', 1);
 INSERT INTO `admin_role` VALUES (2, 'contentManager', '内容管理员', 1);
-INSERT INTO `admin_role` VALUES (3, 'visitor', '访客', 1);
-INSERT INTO `admin_role` VALUES (9, 'test', '测试角色', 1);
+INSERT INTO `admin_role` VALUES (3, 'visitor', '员工', 1);
+INSERT INTO `admin_role` VALUES (9, 'test', 'Hr', 1);
 
 -- ----------------------------
 -- Table structure for admin_role_menu
@@ -96,7 +100,7 @@ CREATE TABLE `admin_role_menu`  (
   `rid` int NULL DEFAULT NULL,
   `mid` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 194 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 194 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_role_menu
@@ -123,6 +127,12 @@ INSERT INTO `admin_role_menu` VALUES (127, 1, 8);
 INSERT INTO `admin_role_menu` VALUES (128, 1, 9);
 INSERT INTO `admin_role_menu` VALUES (129, 1, 10);
 INSERT INTO `admin_role_menu` VALUES (130, 1, 5);
+INSERT INTO `admin_role_menu` VALUES (131, 1, 17);
+INSERT INTO `admin_role_menu` VALUES (132, 1, 18);
+INSERT INTO `admin_role_menu` VALUES (133, 1, 19);
+INSERT INTO `admin_role_menu` VALUES (134, 1, 20);
+INSERT INTO `admin_role_menu` VALUES (135, 1, 21);
+INSERT INTO `admin_role_menu` VALUES (136, 1, 22);
 
 -- ----------------------------
 -- Table structure for admin_role_permission
@@ -135,7 +145,7 @@ CREATE TABLE `admin_role_permission`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_role_permission_role_1`(`rid`) USING BTREE,
   INDEX `fk_role_permission_permission_1`(`pid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 140 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 140 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_role_permission
@@ -157,14 +167,14 @@ CREATE TABLE `admin_user_role`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_operator_role_operator_1`(`uid`) USING BTREE,
   INDEX `fk_operator_role_role_1`(`rid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_user_role
 -- ----------------------------
 INSERT INTO `admin_user_role` VALUES (40, 24, 2);
 INSERT INTO `admin_user_role` VALUES (63, 3, 2);
-INSERT INTO `admin_user_role` VALUES (64, 1, 1);
+INSERT INTO `admin_user_role` VALUES (64, 110, 1);
 INSERT INTO `admin_user_role` VALUES (65, 2, 3);
 INSERT INTO `admin_user_role` VALUES (66, 2, 9);
 
@@ -184,7 +194,7 @@ CREATE TABLE `book`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_book_category_on_cid`(`cid`) USING BTREE,
   CONSTRAINT `fk_book_category_on_cid` FOREIGN KEY (`cid`) REFERENCES `category` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 109 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 109 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of book
@@ -218,7 +228,7 @@ CREATE TABLE `category`  (
   `id` int NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of category
@@ -243,7 +253,7 @@ CREATE TABLE `jotter_article`  (
   `article_cover` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `article_date` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jotter_article
@@ -266,7 +276,7 @@ CREATE TABLE `points_record`  (
   `change_type` int NULL DEFAULT NULL COMMENT '变动类型（0积分兑换减少为负数1推荐人才奖励增加+）',
   `event_time` datetime NULL DEFAULT NULL COMMENT '事项发生时间',
   PRIMARY KEY (`pointsId`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of points_record
@@ -282,7 +292,7 @@ CREATE TABLE `position_list`  (
   `position_belong_apartment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `position_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`postion_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of position_list
@@ -309,19 +319,18 @@ CREATE TABLE `recruit_list`  (
   `eduction_class` int NULL DEFAULT NULL COMMENT '学历',
   `enabled` tinyint(1) NULL DEFAULT NULL COMMENT '是否过期',
   PRIMARY KEY (`recruit_Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci COMMENT = '招聘岗位信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci COMMENT = '招聘岗位信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recruit_list
 -- ----------------------------
 INSERT INTO `recruit_list` VALUES (3, '产品运营', '运营', 1, '杭州', '2021-04-14', '2020-10-15', 2, '还把手机黑客帝国把计划是给大家', '职位标题', 20, 40, 1, 2, 0);
 INSERT INTO `recruit_list` VALUES (4, '前端', '研发', 1, '上海', NULL, '2021-04-12', 5, '走过路过不要错过', NULL, 54, 18, 5, 3, 0);
-INSERT INTO `recruit_list` VALUES (8, 'master学历', NULL, 0, '', NULL, NULL, 0, '', NULL, 0, 0, 0, 3, 0);
 INSERT INTO `recruit_list` VALUES (9, '职位111', NULL, 0, '上海', NULL, NULL, 22, '', NULL, 0, 0, 0, 2, 1);
 INSERT INTO `recruit_list` VALUES (11, '职位111', NULL, 0, '杭州', NULL, NULL, 22, '哈哈哈哈哈哈\n', NULL, 0, 0, 0, 0, 1);
 INSERT INTO `recruit_list` VALUES (12, '职位111', NULL, 0, '杭州', NULL, NULL, 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1);
 INSERT INTO `recruit_list` VALUES (13, '职位111', NULL, 0, '杭州', NULL, '2021-04-07', 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1);
-INSERT INTO `recruit_list` VALUES (14, 'qq', NULL, 0, '上海', NULL, '2021-04-13', 0, '', NULL, 0, 0, 0, 2, 1);
+INSERT INTO `recruit_list` VALUES (14, 'qq', NULL, 0, '上海', NULL, '2021-04-13', 0, '', NULL, 0, 0, 0, 2, 0);
 
 -- ----------------------------
 -- Table structure for resumeinfo_list
@@ -363,7 +372,7 @@ CREATE TABLE `resumeinfo_list`  (
   `photo` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_chinese_ci NULL DEFAULT '' COMMENT '照片',
   `resume_type` int NULL DEFAULT NULL COMMENT '简历类型（0普通1人才库2暂存库）',
   PRIMARY KEY (`resume_Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of resumeinfo_list
@@ -387,14 +396,14 @@ CREATE TABLE `user`  (
   `birth` datetime NULL DEFAULT NULL COMMENT '生日',
   `sum_points` int NULL DEFAULT NULL COMMENT '积分总值',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 113 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 113 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (2, 'test', '85087738b6c1e1d212683bfafc163853', 'JBba3j5qRykIPJQYTNNH9A==', '测试', '12312312312', '123@123.com', 1, 0, NULL, NULL);
 INSERT INTO `user` VALUES (3, 'editor', '8583a2d965d6159edbf65c82d871fa3e', 'MZTe7Qwf9QgXBXrZzTIqJQ==', '编辑', NULL, NULL, 1, 0, NULL, NULL);
-INSERT INTO `user` VALUES (110, 'jt', 'b8051c43ad5a9c7acb25f5a6963c0f1e', 'Xb9/1tvJnZ3VfG4lrccUZA==', 'jiangting', '123456789', '123456', 1, 0, NULL, NULL);
+INSERT INTO `user` VALUES (110, 'jt', 'b8051c43ad5a9c7acb25f5a6963c0f1e', 'Xb9/1tvJnZ3VfG4lrccUZA==', 'jiangting', '123456789', '123456', 1, 1, NULL, NULL);
 INSERT INTO `user` VALUES (111, '11', '0596a32312b41ca27a85c0dc32c883bc', '0uVD8bEuz07OE9DAD55c0g==', '11', '11', '11', 1, 0, NULL, NULL);
 INSERT INTO `user` VALUES (112, '1', '66d10be5eb0df4a07fe77e4c6a2ed4fa', 'GqeH2v+9xc9cnaigSbXeEA==', 'my name', '1', '1', 1, 0, NULL, NULL);
 
