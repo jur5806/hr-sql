@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : jur-jt
+ Source Server         : content01
  Source Server Type    : MySQL
- Source Server Version : 80020
+ Source Server Version : 80022
  Source Host           : localhost:3306
  Source Schema         : jurjt
 
  Target Server Type    : MySQL
- Target Server Version : 80020
+ Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 30/04/2021 17:34:08
+ Date: 09/05/2021 23:28:04
 */
 
 SET NAMES utf8mb4;
@@ -48,7 +48,7 @@ INSERT INTO `admin_menu` VALUES (10, '/ResumeUpload', 'ArticleManagement', '简�
 INSERT INTO `admin_menu` VALUES (17, '/index/myRecommend', 'myRecommend', '我的推荐', 'el-icon-s-claim', 'layer', 0);
 INSERT INTO `admin_menu` VALUES (18, '/index/PublishedPosition', 'PublishedPosition', '我发布的职位', NULL, 'PublishedPosition', 4);
 INSERT INTO `admin_menu` VALUES (19, '/ResumeUpload', 'ResumeUpload', '简历上传', '', 'ResumeUpload', 10);
-INSERT INTO `admin_menu` VALUES (20, '/index/myRecommend', 'myRecommend', '我的推荐', NULL, 'myRecommend', 18);
+INSERT INTO `admin_menu` VALUES (20, '/index/myRecommend', 'myRecommend', '我的推荐', NULL, 'myRecommend', 17);
 INSERT INTO `admin_menu` VALUES (21, '/talentPool', 'talentPool', '人才管理', 'el-icon-folder-opened', 'layer', 0);
 INSERT INTO `admin_menu` VALUES (22, '/talentPool/talentInfoList', 'talentPool', '人才库', '', 'talentPool', 21);
 
@@ -267,20 +267,26 @@ INSERT INTO `jotter_article` VALUES (3, '《白卷》项目简介', '<p><img src
 -- ----------------------------
 DROP TABLE IF EXISTS `points_record`;
 CREATE TABLE `points_record`  (
-  `pointsId` int NOT NULL COMMENT '积分记录id',
-  `userId` int NOT NULL COMMENT '对应员工id',
+  `points_id` int NOT NULL AUTO_INCREMENT COMMENT '积分记录id',
+  `user_id` int NULL DEFAULT NULL COMMENT '对应员工id',
   `event_type` int NULL DEFAULT NULL COMMENT '事项id（1提交简历2HR初审3面试通过4入职成功5自定义奖励6主管初审7积分兑换商品）',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '员工真实姓名',
-  `phone` int NULL DEFAULT NULL COMMENT '员工手机号',
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '员工手机号',
   `points_num` int NULL DEFAULT NULL COMMENT '变动积分值',
   `change_type` int NULL DEFAULT NULL COMMENT '变动类型（0积分兑换减少为负数1推荐人才奖励增加+）',
   `event_time` datetime NULL DEFAULT NULL COMMENT '事项发生时间',
-  PRIMARY KEY (`pointsId`) USING BTREE
+  `dealer` int NULL DEFAULT NULL COMMENT '处理人',
+  PRIMARY KEY (`points_id`) USING BTREE,
+  INDEX `积分外键1`(`user_id`) USING BTREE,
+  INDEX `积分外键2`(`dealer`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of points_record
 -- ----------------------------
+INSERT INTO `points_record` VALUES (1, 110, 1, 'jiangting', '1', 1, 1, '2021-05-04 10:22:40', 1);
+INSERT INTO `points_record` VALUES (2, 110, 1, 'jiangting', '123456789', 0, 1, '2021-05-09 17:04:21', 111);
+INSERT INTO `points_record` VALUES (3, 110, 1, 'jiangting', '123456789', 2, 1, '2021-05-09 17:05:16', 111);
 
 -- ----------------------------
 -- Table structure for position_list
@@ -330,7 +336,7 @@ INSERT INTO `recruit_list` VALUES (9, '职位111', NULL, 0, '上海', NULL, NULL
 INSERT INTO `recruit_list` VALUES (11, '职位111', NULL, 0, '杭州', NULL, NULL, 22, '哈哈哈哈哈哈\n', NULL, 0, 0, 0, 0, 1);
 INSERT INTO `recruit_list` VALUES (12, '职位111', NULL, 0, '杭州', NULL, NULL, 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1);
 INSERT INTO `recruit_list` VALUES (13, '职位111', NULL, 0, '杭州', NULL, '2021-04-07', 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1);
-INSERT INTO `recruit_list` VALUES (14, 'qq', NULL, 0, '上海', NULL, '2021-04-13', 0, '', NULL, 0, 0, 0, 2, 0);
+INSERT INTO `recruit_list` VALUES (14, 'qq', NULL, 0, '上海', NULL, '2021-04-13', 0, '1、负责抖音电商红人美妆店铺的运营工作，助力红人店铺发展；\r\n              2、设计美妆红人店铺直播解决方案，根据行业发展特征和消费者洞察力，输出美妆红人店铺打法及落地；\r\n              3、和主播进行美妆货品结构方向的沟通，帮助红人通过直播加速商品流通。', NULL, 0, 0, 0, 2, 0);
 
 -- ----------------------------
 -- Table structure for resumeinfo_list
@@ -401,10 +407,10 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (2, 'test', '85087738b6c1e1d212683bfafc163853', 'JBba3j5qRykIPJQYTNNH9A==', '测试', '12312312312', '123@123.com', 1, 0, NULL, NULL);
-INSERT INTO `user` VALUES (3, 'editor', '8583a2d965d6159edbf65c82d871fa3e', 'MZTe7Qwf9QgXBXrZzTIqJQ==', '编辑', NULL, NULL, 1, 0, NULL, NULL);
-INSERT INTO `user` VALUES (110, 'jt', 'b8051c43ad5a9c7acb25f5a6963c0f1e', 'Xb9/1tvJnZ3VfG4lrccUZA==', 'jiangting', '123456789', '123456', 1, 1, NULL, NULL);
-INSERT INTO `user` VALUES (111, '11', '0596a32312b41ca27a85c0dc32c883bc', '0uVD8bEuz07OE9DAD55c0g==', '11', '11', '11', 1, 0, NULL, NULL);
-INSERT INTO `user` VALUES (112, '1', '66d10be5eb0df4a07fe77e4c6a2ed4fa', 'GqeH2v+9xc9cnaigSbXeEA==', 'my name', '1', '1', 1, 0, NULL, NULL);
+INSERT INTO `user` VALUES (2, 'test', '85087738b6c1e1d212683bfafc163853', 'JBba3j5qRykIPJQYTNNH9A==', '测试', '12312312312', '123@123.com', 1, 0, NULL, 0);
+INSERT INTO `user` VALUES (3, 'editor', '8583a2d965d6159edbf65c82d871fa3e', 'MZTe7Qwf9QgXBXrZzTIqJQ==', '编辑', NULL, NULL, 1, 0, NULL, 0);
+INSERT INTO `user` VALUES (110, 'jt', 'b8051c43ad5a9c7acb25f5a6963c0f1e', 'Xb9/1tvJnZ3VfG4lrccUZA==', 'jiangting', '123456789', '123456', 1, 1, NULL, 3);
+INSERT INTO `user` VALUES (111, '11', '0596a32312b41ca27a85c0dc32c883bc', '0uVD8bEuz07OE9DAD55c0g==', '11', '11', '11', 1, 0, NULL, 0);
+INSERT INTO `user` VALUES (112, '1', '66d10be5eb0df4a07fe77e4c6a2ed4fa', 'GqeH2v+9xc9cnaigSbXeEA==', 'my name', '1', '1', 1, 0, NULL, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;
