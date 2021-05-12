@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 09/05/2021 23:28:04
+ Date: 12/05/2021 20:41:36
 */
 
 SET NAMES utf8mb4;
@@ -51,6 +51,7 @@ INSERT INTO `admin_menu` VALUES (19, '/ResumeUpload', 'ResumeUpload', '简历上
 INSERT INTO `admin_menu` VALUES (20, '/index/myRecommend', 'myRecommend', '我的推荐', NULL, 'myRecommend', 17);
 INSERT INTO `admin_menu` VALUES (21, '/talentPool', 'talentPool', '人才管理', 'el-icon-folder-opened', 'layer', 0);
 INSERT INTO `admin_menu` VALUES (22, '/talentPool/talentInfoList', 'talentPool', '人才库', '', 'talentPool', 21);
+INSERT INTO `admin_menu` VALUES (23, '/talentPool/resumeInfoList', 'resumeInfoList', '简历列表', NULL, 'resumeInfoList', 21);
 
 -- ----------------------------
 -- Table structure for admin_permission
@@ -277,9 +278,9 @@ CREATE TABLE `points_record`  (
   `event_time` datetime NULL DEFAULT NULL COMMENT '事项发生时间',
   `dealer` int NULL DEFAULT NULL COMMENT '处理人',
   PRIMARY KEY (`points_id`) USING BTREE,
-  INDEX `积分外键1`(`user_id`) USING BTREE,
-  INDEX `积分外键2`(`dealer`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+  INDEX `积分外键2`(`dealer`) USING BTREE,
+  INDEX `积分外键1`(`user_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of points_record
@@ -378,12 +379,15 @@ CREATE TABLE `resumeinfo_list`  (
   `photo` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_chinese_ci NULL DEFAULT '' COMMENT '照片',
   `resume_type` int NULL DEFAULT NULL COMMENT '简历类型（0普通1人才库2暂存库）',
   PRIMARY KEY (`resume_Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of resumeinfo_list
 -- ----------------------------
-INSERT INTO `resumeinfo_list` VALUES (2, 3, 'sfd', 2, '中国', '汉', '1999-01-01', NULL, 20, 0, '', NULL, '', '', NULL, NULL, NULL, NULL, '', NULL, '', '', '', NULL, '', NULL, NULL, '', '', '', '', '', '', NULL);
+INSERT INTO `resumeinfo_list` VALUES (2, 3, 'sfd', 110, '中国', '汉', '1999-01-01', NULL, 20, 0, '', NULL, '', '', NULL, NULL, NULL, NULL, '', NULL, '', '', '', NULL, '', NULL, NULL, '', '', '', '', '', '', NULL);
+INSERT INTO `resumeinfo_list` VALUES (3, NULL, '1', 0, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `resumeinfo_list` VALUES (4, NULL, '张张', 7, '上海', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '东方', '财务', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `resumeinfo_list` VALUES (5, NULL, '张章', 110, '北京', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '1', '1', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for user
