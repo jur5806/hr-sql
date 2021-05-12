@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 12/05/2021 20:41:36
+ Date: 12/05/2021 21:20:38
 */
 
 SET NAMES utf8mb4;
@@ -325,19 +325,20 @@ CREATE TABLE `recruit_list`  (
   `position_type_id` int NULL DEFAULT NULL COMMENT '岗位筛选id',
   `eduction_class` int NULL DEFAULT NULL COMMENT '学历',
   `enabled` tinyint(1) NULL DEFAULT NULL COMMENT '是否过期',
+  `hr_id` int NULL DEFAULT NULL COMMENT 'hr的用户id',
   PRIMARY KEY (`recruit_Id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci COMMENT = '招聘岗位信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recruit_list
 -- ----------------------------
-INSERT INTO `recruit_list` VALUES (3, '产品运营', '运营', 1, '杭州', '2021-04-14', '2020-10-15', 2, '还把手机黑客帝国把计划是给大家', '职位标题', 20, 40, 1, 2, 0);
-INSERT INTO `recruit_list` VALUES (4, '前端', '研发', 1, '上海', NULL, '2021-04-12', 5, '走过路过不要错过', NULL, 54, 18, 5, 3, 0);
-INSERT INTO `recruit_list` VALUES (9, '职位111', NULL, 0, '上海', NULL, NULL, 22, '', NULL, 0, 0, 0, 2, 1);
-INSERT INTO `recruit_list` VALUES (11, '职位111', NULL, 0, '杭州', NULL, NULL, 22, '哈哈哈哈哈哈\n', NULL, 0, 0, 0, 0, 1);
-INSERT INTO `recruit_list` VALUES (12, '职位111', NULL, 0, '杭州', NULL, NULL, 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1);
-INSERT INTO `recruit_list` VALUES (13, '职位111', NULL, 0, '杭州', NULL, '2021-04-07', 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1);
-INSERT INTO `recruit_list` VALUES (14, 'qq', NULL, 0, '上海', NULL, '2021-04-13', 0, '1、负责抖音电商红人美妆店铺的运营工作，助力红人店铺发展；\r\n              2、设计美妆红人店铺直播解决方案，根据行业发展特征和消费者洞察力，输出美妆红人店铺打法及落地；\r\n              3、和主播进行美妆货品结构方向的沟通，帮助红人通过直播加速商品流通。', NULL, 0, 0, 0, 2, 0);
+INSERT INTO `recruit_list` VALUES (3, '产品运营', '运营', 1, '杭州', '2021-04-14', '2020-10-15', 2, '还把手机黑客帝国把计划是给大家', '职位标题', 20, 40, 1, 2, 0, 111);
+INSERT INTO `recruit_list` VALUES (4, '前端', '研发', 1, '上海', NULL, '2021-04-12', 5, '走过路过不要错过', NULL, 54, 18, 5, 3, 0, 111);
+INSERT INTO `recruit_list` VALUES (9, '职位111', NULL, 0, '上海', NULL, NULL, 22, '', NULL, 0, 0, 0, 2, 1, 111);
+INSERT INTO `recruit_list` VALUES (11, '职位111', NULL, 0, '杭州', NULL, NULL, 22, '哈哈哈哈哈哈\n', NULL, 0, 0, 0, 0, 1, 111);
+INSERT INTO `recruit_list` VALUES (12, '职位111', NULL, 0, '杭州', NULL, NULL, 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1, 111);
+INSERT INTO `recruit_list` VALUES (13, '职位111', NULL, 0, '杭州', NULL, '2021-04-07', 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1, 112);
+INSERT INTO `recruit_list` VALUES (14, 'qq', NULL, 0, '上海', NULL, '2021-04-13', 0, '1、负责抖音电商红人美妆店铺的运营工作，助力红人店铺发展；\r\n              2、设计美妆红人店铺直播解决方案，根据行业发展特征和消费者洞察力，输出美妆红人店铺打法及落地；\r\n              3、和主播进行美妆货品结构方向的沟通，帮助红人通过直播加速商品流通。', NULL, 0, 0, 0, 2, 0, 112);
 
 -- ----------------------------
 -- Table structure for resumeinfo_list
@@ -378,16 +379,17 @@ CREATE TABLE `resumeinfo_list`  (
   `professional_info` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_chinese_ci NULL DEFAULT '' COMMENT '专业技能',
   `photo` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_chinese_ci NULL DEFAULT '' COMMENT '照片',
   `resume_type` int NULL DEFAULT NULL COMMENT '简历类型（0普通1人才库2暂存库）',
+  `hr_id` int NULL DEFAULT NULL COMMENT 'Hr的用户id',
   PRIMARY KEY (`resume_Id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of resumeinfo_list
 -- ----------------------------
-INSERT INTO `resumeinfo_list` VALUES (2, 3, 'sfd', 110, '中国', '汉', '1999-01-01', NULL, 20, 0, '', NULL, '', '', NULL, NULL, NULL, NULL, '', NULL, '', '', '', NULL, '', NULL, NULL, '', '', '', '', '', '', NULL);
-INSERT INTO `resumeinfo_list` VALUES (3, NULL, '1', 0, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `resumeinfo_list` VALUES (4, NULL, '张张', 7, '上海', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '东方', '财务', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `resumeinfo_list` VALUES (5, NULL, '张章', 110, '北京', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '1', '1', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `resumeinfo_list` VALUES (2, 3, 'sfd', 110, '中国', '汉', '1999-01-01', NULL, 20, 0, '', NULL, '', '', NULL, NULL, NULL, NULL, '', NULL, '', '', '', NULL, '', NULL, NULL, '', '', '', '', '', '', NULL, 111);
+INSERT INTO `resumeinfo_list` VALUES (3, NULL, '1', 0, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 111);
+INSERT INTO `resumeinfo_list` VALUES (4, NULL, '张张', 7, '上海', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '东方', '财务', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 111);
+INSERT INTO `resumeinfo_list` VALUES (5, NULL, '张章', 110, '北京', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '1', '1', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 112);
 
 -- ----------------------------
 -- Table structure for user
