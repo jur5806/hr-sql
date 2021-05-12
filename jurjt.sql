@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 12/05/2021 21:20:38
+ Date: 13/05/2021 00:03:53
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `admin_menu`  (
   `component` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `parent_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_menu
@@ -88,9 +88,8 @@ CREATE TABLE `admin_role`  (
 -- Records of admin_role
 -- ----------------------------
 INSERT INTO `admin_role` VALUES (1, 'sysAdmin', '系统管理员', 1);
-INSERT INTO `admin_role` VALUES (2, 'contentManager', '内容管理员', 1);
-INSERT INTO `admin_role` VALUES (3, 'visitor', '员工', 1);
-INSERT INTO `admin_role` VALUES (9, 'test', 'Hr', 1);
+INSERT INTO `admin_role` VALUES (3, 'staff', '员工', 1);
+INSERT INTO `admin_role` VALUES (9, 'human resources', 'Hr', 0);
 
 -- ----------------------------
 -- Table structure for admin_role_menu
@@ -108,10 +107,6 @@ CREATE TABLE `admin_role_menu`  (
 -- ----------------------------
 INSERT INTO `admin_role_menu` VALUES (19, 4, 1);
 INSERT INTO `admin_role_menu` VALUES (20, 4, 2);
-INSERT INTO `admin_role_menu` VALUES (21, 3, 1);
-INSERT INTO `admin_role_menu` VALUES (22, 3, 2);
-INSERT INTO `admin_role_menu` VALUES (23, 9, 1);
-INSERT INTO `admin_role_menu` VALUES (24, 9, 2);
 INSERT INTO `admin_role_menu` VALUES (77, 2, 1);
 INSERT INTO `admin_role_menu` VALUES (78, 2, 2);
 INSERT INTO `admin_role_menu` VALUES (79, 2, 4);
@@ -134,6 +129,23 @@ INSERT INTO `admin_role_menu` VALUES (133, 1, 19);
 INSERT INTO `admin_role_menu` VALUES (134, 1, 20);
 INSERT INTO `admin_role_menu` VALUES (135, 1, 21);
 INSERT INTO `admin_role_menu` VALUES (136, 1, 22);
+INSERT INTO `admin_role_menu` VALUES (194, 3, 1);
+INSERT INTO `admin_role_menu` VALUES (195, 3, 2);
+INSERT INTO `admin_role_menu` VALUES (196, 3, 10);
+INSERT INTO `admin_role_menu` VALUES (197, 3, 19);
+INSERT INTO `admin_role_menu` VALUES (198, 3, 17);
+INSERT INTO `admin_role_menu` VALUES (199, 3, 20);
+INSERT INTO `admin_role_menu` VALUES (200, 9, 1);
+INSERT INTO `admin_role_menu` VALUES (201, 9, 2);
+INSERT INTO `admin_role_menu` VALUES (202, 9, 3);
+INSERT INTO `admin_role_menu` VALUES (203, 9, 6);
+INSERT INTO `admin_role_menu` VALUES (204, 9, 7);
+INSERT INTO `admin_role_menu` VALUES (205, 9, 4);
+INSERT INTO `admin_role_menu` VALUES (206, 9, 18);
+INSERT INTO `admin_role_menu` VALUES (207, 9, 5);
+INSERT INTO `admin_role_menu` VALUES (208, 9, 8);
+INSERT INTO `admin_role_menu` VALUES (209, 9, 9);
+INSERT INTO `admin_role_menu` VALUES (210, 9, 23);
 
 -- ----------------------------
 -- Table structure for admin_role_permission
@@ -173,11 +185,12 @@ CREATE TABLE `admin_user_role`  (
 -- ----------------------------
 -- Records of admin_user_role
 -- ----------------------------
-INSERT INTO `admin_user_role` VALUES (40, 24, 2);
-INSERT INTO `admin_user_role` VALUES (63, 3, 2);
+INSERT INTO `admin_user_role` VALUES (40, 24, 3);
+INSERT INTO `admin_user_role` VALUES (63, 3, 3);
 INSERT INTO `admin_user_role` VALUES (64, 110, 1);
 INSERT INTO `admin_user_role` VALUES (65, 2, 3);
 INSERT INTO `admin_user_role` VALUES (66, 2, 9);
+INSERT INTO `admin_user_role` VALUES (69, 112, 9);
 
 -- ----------------------------
 -- Table structure for book
@@ -277,6 +290,7 @@ CREATE TABLE `points_record`  (
   `change_type` int NULL DEFAULT NULL COMMENT '变动类型（0积分兑换减少为负数1推荐人才奖励增加+）',
   `event_time` datetime NULL DEFAULT NULL COMMENT '事项发生时间',
   `dealer` int NULL DEFAULT NULL COMMENT '处理人',
+  `resume_id` int NULL DEFAULT NULL COMMENT '职位id',
   PRIMARY KEY (`points_id`) USING BTREE,
   INDEX `积分外键2`(`dealer`) USING BTREE,
   INDEX `积分外键1`(`user_id`) USING BTREE
@@ -285,9 +299,10 @@ CREATE TABLE `points_record`  (
 -- ----------------------------
 -- Records of points_record
 -- ----------------------------
-INSERT INTO `points_record` VALUES (1, 110, 1, 'jiangting', '1', 1, 1, '2021-05-04 10:22:40', 1);
-INSERT INTO `points_record` VALUES (2, 110, 1, 'jiangting', '123456789', 0, 1, '2021-05-09 17:04:21', 111);
-INSERT INTO `points_record` VALUES (3, 110, 1, 'jiangting', '123456789', 2, 1, '2021-05-09 17:05:16', 111);
+INSERT INTO `points_record` VALUES (1, 110, 1, 'jiangting', '1', 1, 1, '2021-05-04 10:22:40', 1, 4);
+INSERT INTO `points_record` VALUES (2, 110, 1, 'jiangting', '123456789', 0, 1, '2021-05-09 17:04:21', 111, 4);
+INSERT INTO `points_record` VALUES (3, 110, 1, 'jiangting', '123456789', 2, 1, '2021-05-09 17:05:16', 111, 5);
+INSERT INTO `points_record` VALUES (4, 110, 1, 'jiangting', '123456789', 2, 1, '2021-05-13 00:00:47', 111, 2);
 
 -- ----------------------------
 -- Table structure for position_list
@@ -339,6 +354,8 @@ INSERT INTO `recruit_list` VALUES (11, '职位111', NULL, 0, '杭州', NULL, NUL
 INSERT INTO `recruit_list` VALUES (12, '职位111', NULL, 0, '杭州', NULL, NULL, 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1, 111);
 INSERT INTO `recruit_list` VALUES (13, '职位111', NULL, 0, '杭州', NULL, '2021-04-07', 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1, 112);
 INSERT INTO `recruit_list` VALUES (14, 'qq', NULL, 0, '上海', NULL, '2021-04-13', 0, '1、负责抖音电商红人美妆店铺的运营工作，助力红人店铺发展；\r\n              2、设计美妆红人店铺直播解决方案，根据行业发展特征和消费者洞察力，输出美妆红人店铺打法及落地；\r\n              3、和主播进行美妆货品结构方向的沟通，帮助红人通过直播加速商品流通。', NULL, 0, 0, 0, 2, 0, 112);
+INSERT INTO `recruit_list` VALUES (15, '', NULL, 0, '', '2021-05-12', '2021-05-13', 0, '', NULL, 0, 0, 0, 0, 1, 110);
+INSERT INTO `recruit_list` VALUES (16, '前端事故多发', NULL, 1, '北京', '2021-05-12', '2021-05-12', 5, '是高度季后赛的公开播放^与萨给丢药ASGD', NULL, 0, 0, 0, 1, 1, 110);
 
 -- ----------------------------
 -- Table structure for resumeinfo_list
@@ -381,15 +398,17 @@ CREATE TABLE `resumeinfo_list`  (
   `resume_type` int NULL DEFAULT NULL COMMENT '简历类型（0普通1人才库2暂存库）',
   `hr_id` int NULL DEFAULT NULL COMMENT 'Hr的用户id',
   PRIMARY KEY (`resume_Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of resumeinfo_list
 -- ----------------------------
-INSERT INTO `resumeinfo_list` VALUES (2, 3, 'sfd', 110, '中国', '汉', '1999-01-01', NULL, 20, 0, '', NULL, '', '', NULL, NULL, NULL, NULL, '', NULL, '', '', '', NULL, '', NULL, NULL, '', '', '', '', '', '', NULL, 111);
-INSERT INTO `resumeinfo_list` VALUES (3, NULL, '1', 0, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 111);
-INSERT INTO `resumeinfo_list` VALUES (4, NULL, '张张', 7, '上海', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '东方', '财务', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 111);
-INSERT INTO `resumeinfo_list` VALUES (5, NULL, '张章', 110, '北京', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '1', '1', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 112);
+INSERT INTO `resumeinfo_list` VALUES (2, 3, 'sfd', 110, '中国', '汉', '1999-01-01', NULL, 20, 1, '', NULL, '', '', NULL, NULL, NULL, NULL, '', NULL, '0', '', '', NULL, '', NULL, NULL, '', '', '', '', '', '', NULL, 111);
+INSERT INTO `resumeinfo_list` VALUES (3, 4, '1', 0, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 111);
+INSERT INTO `resumeinfo_list` VALUES (4, 4, '张张', 7, '上海', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '东方', '财务', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 111);
+INSERT INTO `resumeinfo_list` VALUES (5, 9, '张章', 110, '北京', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '1', '1', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 112);
+INSERT INTO `resumeinfo_list` VALUES (6, 3, 'www', 110, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '自我评价', NULL, NULL, NULL, NULL, NULL, NULL, 111);
+INSERT INTO `resumeinfo_list` VALUES (7, 16, '名字是啥', 110, '北京', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 110);
 
 -- ----------------------------
 -- Table structure for user
@@ -415,8 +434,8 @@ CREATE TABLE `user`  (
 -- ----------------------------
 INSERT INTO `user` VALUES (2, 'test', '85087738b6c1e1d212683bfafc163853', 'JBba3j5qRykIPJQYTNNH9A==', '测试', '12312312312', '123@123.com', 1, 0, NULL, 0);
 INSERT INTO `user` VALUES (3, 'editor', '8583a2d965d6159edbf65c82d871fa3e', 'MZTe7Qwf9QgXBXrZzTIqJQ==', '编辑', NULL, NULL, 1, 0, NULL, 0);
-INSERT INTO `user` VALUES (110, 'jt', 'b8051c43ad5a9c7acb25f5a6963c0f1e', 'Xb9/1tvJnZ3VfG4lrccUZA==', 'jiangting', '123456789', '123456', 1, 1, NULL, 3);
+INSERT INTO `user` VALUES (110, 'jt', 'b8051c43ad5a9c7acb25f5a6963c0f1e', 'Xb9/1tvJnZ3VfG4lrccUZA==', 'jiangting', '123456789', '123456', 1, 1, NULL, 5);
 INSERT INTO `user` VALUES (111, '11', '0596a32312b41ca27a85c0dc32c883bc', '0uVD8bEuz07OE9DAD55c0g==', '11', '11', '11', 1, 0, NULL, 0);
-INSERT INTO `user` VALUES (112, '1', '66d10be5eb0df4a07fe77e4c6a2ed4fa', 'GqeH2v+9xc9cnaigSbXeEA==', 'my name', '1', '1', 1, 0, NULL, 0);
+INSERT INTO `user` VALUES (112, '1', '66d10be5eb0df4a07fe77e4c6a2ed4fa', 'GqeH2v+9xc9cnaigSbXeEA==', 'my name', '1', '1', 0, 0, NULL, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;
