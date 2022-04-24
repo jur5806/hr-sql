@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : content01
+ Source Server         : jurjt
  Source Server Type    : MySQL
  Source Server Version : 80022
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 13/05/2021 00:03:53
+ Date: 24/04/2022 22:55:03
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `admin_menu`  (
   `component` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `parent_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_menu
@@ -42,16 +42,15 @@ INSERT INTO `admin_menu` VALUES (4, '/index/NewPosition', 'Content', '职位管�
 INSERT INTO `admin_menu` VALUES (5, '/admin', 'System', '积分管理', 'el-icon-s-tools', 'layer', 0);
 INSERT INTO `admin_menu` VALUES (6, '/index/userManagement', 'Profile', '用户信息', NULL, 'userManagement', 3);
 INSERT INTO `admin_menu` VALUES (7, '/index/roleConfiguration', 'Role', '角色配置', NULL, 'roleConfiguration', 3);
-INSERT INTO `admin_menu` VALUES (8, '/index/pointsExchange', 'BookManagement', '积分设置', NULL, 'pointsExchange', 5);
-INSERT INTO `admin_menu` VALUES (9, '/index/pointsManagement', 'BannerManagement', '积分记录', NULL, 'pointsManagement', 5);
-INSERT INTO `admin_menu` VALUES (10, '/ResumeUpload', 'ArticleManagement', '简历上传', 'el-icon-s-order', 'layer', 0);
-INSERT INTO `admin_menu` VALUES (17, '/index/myRecommend', 'myRecommend', '我的推荐', 'el-icon-s-claim', 'layer', 0);
+INSERT INTO `admin_menu` VALUES (8, '/index/pointsManagement', 'pointsManagement', '积分列表', NULL, 'pointsManagement', 5);
+INSERT INTO `admin_menu` VALUES (10, '/ResumeUpload', 'ArticleManagement', '简历管理', 'el-icon-s-order', 'layer', 0);
+INSERT INTO `admin_menu` VALUES (17, '/index/myRecommend', 'myRecommend', '个人中心', 'el-icon-s-claim', 'layer', 0);
 INSERT INTO `admin_menu` VALUES (18, '/index/PublishedPosition', 'PublishedPosition', '我发布的职位', NULL, 'PublishedPosition', 4);
 INSERT INTO `admin_menu` VALUES (19, '/ResumeUpload', 'ResumeUpload', '简历上传', '', 'ResumeUpload', 10);
 INSERT INTO `admin_menu` VALUES (20, '/index/myRecommend', 'myRecommend', '我的推荐', NULL, 'myRecommend', 17);
 INSERT INTO `admin_menu` VALUES (21, '/talentPool', 'talentPool', '人才管理', 'el-icon-folder-opened', 'layer', 0);
-INSERT INTO `admin_menu` VALUES (22, '/talentPool/talentInfoList', 'talentPool', '人才库', '', 'talentPool', 21);
 INSERT INTO `admin_menu` VALUES (23, '/talentPool/resumeInfoList', 'resumeInfoList', '简历列表', NULL, 'resumeInfoList', 21);
+INSERT INTO `admin_menu` VALUES (24, '/index/myPoints', 'myPoints', '我的积分', '', 'myPoints', 17);
 
 -- ----------------------------
 -- Table structure for admin_permission
@@ -82,14 +81,15 @@ CREATE TABLE `admin_role`  (
   `name_zh` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '中文名',
   `enabled` tinyint(1) NULL DEFAULT NULL COMMENT '是否禁用',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_role
 -- ----------------------------
-INSERT INTO `admin_role` VALUES (1, 'sysAdmin', '系统管理员', 1);
-INSERT INTO `admin_role` VALUES (3, 'staff', '员工', 1);
-INSERT INTO `admin_role` VALUES (9, 'human resources', 'Hr', 0);
+INSERT INTO `admin_role` VALUES (1, '管理员', '系统管理员', 1);
+INSERT INTO `admin_role` VALUES (3, '推荐人', '员工推荐人', 1);
+INSERT INTO `admin_role` VALUES (9, 'Hr', 'Hr', 1);
+INSERT INTO `admin_role` VALUES (11, 'test', '测试使用', 1);
 
 -- ----------------------------
 -- Table structure for admin_role_menu
@@ -100,7 +100,7 @@ CREATE TABLE `admin_role_menu`  (
   `rid` int NULL DEFAULT NULL,
   `mid` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 194 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 295 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_role_menu
@@ -113,39 +113,43 @@ INSERT INTO `admin_role_menu` VALUES (79, 2, 4);
 INSERT INTO `admin_role_menu` VALUES (80, 2, 8);
 INSERT INTO `admin_role_menu` VALUES (81, 2, 9);
 INSERT INTO `admin_role_menu` VALUES (82, 2, 10);
-INSERT INTO `admin_role_menu` VALUES (121, 1, 1);
-INSERT INTO `admin_role_menu` VALUES (122, 1, 2);
-INSERT INTO `admin_role_menu` VALUES (123, 1, 3);
-INSERT INTO `admin_role_menu` VALUES (124, 1, 6);
-INSERT INTO `admin_role_menu` VALUES (125, 1, 7);
-INSERT INTO `admin_role_menu` VALUES (126, 1, 4);
-INSERT INTO `admin_role_menu` VALUES (127, 1, 8);
-INSERT INTO `admin_role_menu` VALUES (128, 1, 9);
-INSERT INTO `admin_role_menu` VALUES (129, 1, 10);
-INSERT INTO `admin_role_menu` VALUES (130, 1, 5);
-INSERT INTO `admin_role_menu` VALUES (131, 1, 17);
-INSERT INTO `admin_role_menu` VALUES (132, 1, 18);
-INSERT INTO `admin_role_menu` VALUES (133, 1, 19);
-INSERT INTO `admin_role_menu` VALUES (134, 1, 20);
-INSERT INTO `admin_role_menu` VALUES (135, 1, 21);
-INSERT INTO `admin_role_menu` VALUES (136, 1, 22);
-INSERT INTO `admin_role_menu` VALUES (194, 3, 1);
-INSERT INTO `admin_role_menu` VALUES (195, 3, 2);
-INSERT INTO `admin_role_menu` VALUES (196, 3, 10);
-INSERT INTO `admin_role_menu` VALUES (197, 3, 19);
-INSERT INTO `admin_role_menu` VALUES (198, 3, 17);
-INSERT INTO `admin_role_menu` VALUES (199, 3, 20);
-INSERT INTO `admin_role_menu` VALUES (200, 9, 1);
-INSERT INTO `admin_role_menu` VALUES (201, 9, 2);
-INSERT INTO `admin_role_menu` VALUES (202, 9, 3);
-INSERT INTO `admin_role_menu` VALUES (203, 9, 6);
-INSERT INTO `admin_role_menu` VALUES (204, 9, 7);
-INSERT INTO `admin_role_menu` VALUES (205, 9, 4);
-INSERT INTO `admin_role_menu` VALUES (206, 9, 18);
-INSERT INTO `admin_role_menu` VALUES (207, 9, 5);
-INSERT INTO `admin_role_menu` VALUES (208, 9, 8);
-INSERT INTO `admin_role_menu` VALUES (209, 9, 9);
-INSERT INTO `admin_role_menu` VALUES (210, 9, 23);
+INSERT INTO `admin_role_menu` VALUES (211, 10, 1);
+INSERT INTO `admin_role_menu` VALUES (212, 10, 2);
+INSERT INTO `admin_role_menu` VALUES (245, 9, 1);
+INSERT INTO `admin_role_menu` VALUES (246, 9, 2);
+INSERT INTO `admin_role_menu` VALUES (247, 9, 3);
+INSERT INTO `admin_role_menu` VALUES (248, 9, 6);
+INSERT INTO `admin_role_menu` VALUES (249, 9, 7);
+INSERT INTO `admin_role_menu` VALUES (250, 9, 4);
+INSERT INTO `admin_role_menu` VALUES (251, 9, 18);
+INSERT INTO `admin_role_menu` VALUES (252, 9, 5);
+INSERT INTO `admin_role_menu` VALUES (253, 9, 8);
+INSERT INTO `admin_role_menu` VALUES (254, 9, 9);
+INSERT INTO `admin_role_menu` VALUES (255, 1, 3);
+INSERT INTO `admin_role_menu` VALUES (256, 1, 6);
+INSERT INTO `admin_role_menu` VALUES (257, 1, 7);
+INSERT INTO `admin_role_menu` VALUES (258, 1, 5);
+INSERT INTO `admin_role_menu` VALUES (259, 1, 8);
+INSERT INTO `admin_role_menu` VALUES (260, 1, 9);
+INSERT INTO `admin_role_menu` VALUES (261, 1, 21);
+INSERT INTO `admin_role_menu` VALUES (262, 1, 22);
+INSERT INTO `admin_role_menu` VALUES (263, 1, 23);
+INSERT INTO `admin_role_menu` VALUES (266, 1, 5);
+INSERT INTO `admin_role_menu` VALUES (267, 1, 2);
+INSERT INTO `admin_role_menu` VALUES (269, 1, 4);
+INSERT INTO `admin_role_menu` VALUES (270, 1, 10);
+INSERT INTO `admin_role_menu` VALUES (271, 1, 17);
+INSERT INTO `admin_role_menu` VALUES (272, 1, 18);
+INSERT INTO `admin_role_menu` VALUES (273, 1, 19);
+INSERT INTO `admin_role_menu` VALUES (274, 1, 20);
+INSERT INTO `admin_role_menu` VALUES (275, 1, 1);
+INSERT INTO `admin_role_menu` VALUES (288, 3, 1);
+INSERT INTO `admin_role_menu` VALUES (289, 3, 2);
+INSERT INTO `admin_role_menu` VALUES (290, 3, 10);
+INSERT INTO `admin_role_menu` VALUES (291, 3, 19);
+INSERT INTO `admin_role_menu` VALUES (292, 3, 17);
+INSERT INTO `admin_role_menu` VALUES (293, 3, 20);
+INSERT INTO `admin_role_menu` VALUES (294, 3, 24);
 
 -- ----------------------------
 -- Table structure for admin_role_permission
@@ -158,16 +162,16 @@ CREATE TABLE `admin_role_permission`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_role_permission_role_1`(`rid`) USING BTREE,
   INDEX `fk_role_permission_permission_1`(`pid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 140 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 146 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_role_permission
 -- ----------------------------
 INSERT INTO `admin_role_permission` VALUES (83, 5, 3);
 INSERT INTO `admin_role_permission` VALUES (97, 2, 3);
-INSERT INTO `admin_role_permission` VALUES (108, 1, 1);
-INSERT INTO `admin_role_permission` VALUES (109, 1, 2);
-INSERT INTO `admin_role_permission` VALUES (110, 1, 3);
+INSERT INTO `admin_role_permission` VALUES (143, 1, 1);
+INSERT INTO `admin_role_permission` VALUES (144, 1, 2);
+INSERT INTO `admin_role_permission` VALUES (145, 1, 3);
 
 -- ----------------------------
 -- Table structure for admin_user_role
@@ -180,17 +184,44 @@ CREATE TABLE `admin_user_role`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_operator_role_operator_1`(`uid`) USING BTREE,
   INDEX `fk_operator_role_role_1`(`rid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 89 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_user_role
 -- ----------------------------
 INSERT INTO `admin_user_role` VALUES (40, 24, 3);
 INSERT INTO `admin_user_role` VALUES (63, 3, 3);
-INSERT INTO `admin_user_role` VALUES (64, 110, 1);
 INSERT INTO `admin_user_role` VALUES (65, 2, 3);
 INSERT INTO `admin_user_role` VALUES (66, 2, 9);
 INSERT INTO `admin_user_role` VALUES (69, 112, 9);
+INSERT INTO `admin_user_role` VALUES (72, 115, 10);
+INSERT INTO `admin_user_role` VALUES (73, 114, 9);
+INSERT INTO `admin_user_role` VALUES (78, 118, 3);
+INSERT INTO `admin_user_role` VALUES (79, 119, 3);
+INSERT INTO `admin_user_role` VALUES (80, 117, 3);
+INSERT INTO `admin_user_role` VALUES (82, 120, 3);
+INSERT INTO `admin_user_role` VALUES (85, 121, 9);
+INSERT INTO `admin_user_role` VALUES (86, 116, 9);
+INSERT INTO `admin_user_role` VALUES (87, 110, 1);
+INSERT INTO `admin_user_role` VALUES (88, 110, 3);
+
+-- ----------------------------
+-- Table structure for admins
+-- ----------------------------
+DROP TABLE IF EXISTS `admins`;
+CREATE TABLE `admins`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of admins
+-- ----------------------------
+INSERT INTO `admins` VALUES (1, 'admin', 'UCkpKmp3y71DSrU5Tg25s1wcNX3dH3RgXeMI1IR2TpU3wbf9qT7hCbmdCTl4Buu+8aEEmmVP5PTSRLE3aQNJXZymsLVk9ZNLWvvwT7jYK+lqW0xBMkvwABlQV4DQPxdZBv1b4FaQ9l4xMuXEe0xrqgZe2Pkq+Xi1edIMRgIVvKk=', '2021-04-08 13:51:51', '2021-03-13 18:52:19');
 
 -- ----------------------------
 -- Table structure for book
@@ -255,6 +286,29 @@ INSERT INTO `category` VALUES (5, '经管');
 INSERT INTO `category` VALUES (6, '科技');
 
 -- ----------------------------
+-- Table structure for integral_seting
+-- ----------------------------
+DROP TABLE IF EXISTS `integral_seting`;
+CREATE TABLE `integral_seting`  (
+  `integral_seting_id` int NOT NULL COMMENT '积分设置id',
+  `resume_pass_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '面试通过',
+  `resume_pass_value` int NULL DEFAULT NULL COMMENT '面试通过分值',
+  `resume_number_limited` int NULL DEFAULT NULL COMMENT '面试通过上线分数',
+  `view_pass_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '面试通过',
+  `view_pass_value` int NULL DEFAULT NULL,
+  `view_number_limited` int NULL DEFAULT NULL,
+  `success_in_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `success_in_value` int NULL DEFAULT NULL,
+  `success_in_limited` int NULL DEFAULT NULL,
+  PRIMARY KEY (`integral_seting_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of integral_seting
+-- ----------------------------
+INSERT INTO `integral_seting` VALUES (1, '简历审核通过', 6, 500, '面试通过', 20, 500, '成功聘用', 40, 500);
+
+-- ----------------------------
 -- Table structure for jotter_article
 -- ----------------------------
 DROP TABLE IF EXISTS `jotter_article`;
@@ -283,7 +337,7 @@ DROP TABLE IF EXISTS `points_record`;
 CREATE TABLE `points_record`  (
   `points_id` int NOT NULL AUTO_INCREMENT COMMENT '积分记录id',
   `user_id` int NULL DEFAULT NULL COMMENT '对应员工id',
-  `event_type` int NULL DEFAULT NULL COMMENT '事项id（1提交简历2HR初审3面试通过4入职成功5自定义奖励6主管初审7积分兑换商品）',
+  `event_type` int NULL DEFAULT NULL COMMENT '事项id（1HR初审2面试通过3入职成功5自定义奖励6主管初审7积分兑换商品）',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '员工真实姓名',
   `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '员工手机号',
   `points_num` int NULL DEFAULT NULL COMMENT '变动积分值',
@@ -291,18 +345,48 @@ CREATE TABLE `points_record`  (
   `event_time` datetime NULL DEFAULT NULL COMMENT '事项发生时间',
   `dealer` int NULL DEFAULT NULL COMMENT '处理人',
   `resume_id` int NULL DEFAULT NULL COMMENT '职位id',
+  `reason_id` int NULL DEFAULT NULL COMMENT '事项id为7时是兑换奖品',
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
+  `reason_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '原因简称',
   PRIMARY KEY (`points_id`) USING BTREE,
   INDEX `积分外键2`(`dealer`) USING BTREE,
   INDEX `积分外键1`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of points_record
 -- ----------------------------
-INSERT INTO `points_record` VALUES (1, 110, 1, 'jiangting', '1', 1, 1, '2021-05-04 10:22:40', 1, 4);
-INSERT INTO `points_record` VALUES (2, 110, 1, 'jiangting', '123456789', 0, 1, '2021-05-09 17:04:21', 111, 4);
-INSERT INTO `points_record` VALUES (3, 110, 1, 'jiangting', '123456789', 2, 1, '2021-05-09 17:05:16', 111, 5);
-INSERT INTO `points_record` VALUES (4, 110, 1, 'jiangting', '123456789', 2, 1, '2021-05-13 00:00:47', 111, 2);
+INSERT INTO `points_record` VALUES (1, 110, 1, 'jiangting', '1', 1, 1, '2021-05-04 10:22:40', 1, 4, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (2, 110, 1, 'jiangting', '123456789', 0, 1, '2021-05-09 17:04:21', 111, 4, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (3, 110, 1, 'jiangting', '123456789', 2, 1, '2021-05-09 17:05:16', 111, 5, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (4, 110, 1, 'jiangting', '123456789', 2, 1, '2021-05-13 00:00:47', 111, 2, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (5, 116, 1, 'Hr', '123456789', 2, 1, '2021-05-14 22:24:33', 116, 18, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (6, 116, 1, 'Hr', '123456789', 2, 1, '2021-05-14 22:28:25', 116, 18, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (7, 116, 2, 'Hr', '123456789', 2, 1, '2021-05-14 22:29:49', 116, 18, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (8, 110, 3, '管理员jt', '123456789', 5, 1, '2021-05-14 22:32:25', 110, 3, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (9, 116, 1, 'Hr', '123456789', 2, 1, '2021-05-14 22:33:46', 116, 16, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (10, 110, 1, '管理员jt', '123456789', 2, 1, '2021-05-14 23:04:29', 116, 20, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (11, 117, 1, '张经', '12378785656', 2, 1, '2021-05-15 00:15:10', 110, 27, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (12, 110, 1, 'sad', NULL, 2, 1, '2021-05-15 07:07:04', 110, 9, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (13, 110, 2, 'sad', NULL, 2, 1, '2021-05-15 07:07:06', 110, 9, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (14, 110, 3, '1', NULL, 5, 1, '2021-05-15 07:07:15', 110, 3, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (15, 110, 3, '1', NULL, 5, 1, '2021-05-15 07:08:46', 110, 3, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (16, 110, 3, '1', NULL, 5, 1, '2021-05-15 07:10:55', 110, 3, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (17, 110, 3, '1', NULL, 5, 1, '2021-05-15 07:12:39', 110, 3, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (18, 110, 3, 'sad', NULL, 5, 1, '2021-05-15 07:19:22', 110, 9, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (19, 110, 3, 'sad', NULL, 0, 1, '2021-05-15 07:19:44', 110, 9, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (20, 110, 3, 'sad', NULL, 10, 1, '2021-05-15 07:21:22', 110, 9, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (21, 110, 1, 'sad', NULL, 2, 1, '2021-05-15 07:27:25', 110, 9, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (22, 110, 2, 'sad', NULL, 2, 1, '2021-05-15 07:27:34', 110, 9, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (23, 110, 3, 'sad', NULL, 5, 1, '2021-05-15 07:27:39', 110, 9, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (24, 110, 3, 'sad', NULL, 10, 1, '2021-05-15 07:27:51', 110, 9, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (25, 117, 1, '小张', '13567689889', 1, 1, '2021-05-15 09:07:29', 116, 30, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (26, 110, 1, '6545546', '4654654', 1, 1, '2022-04-23 20:14:26', 116, 38, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (27, 110, 1, '6545546', '4654654', 1, 1, '2022-04-23 20:16:47', 116, 37, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (28, 110, 1, '1651', NULL, 1, 1, '2022-04-23 20:18:21', 116, 35, 1, NULL, NULL);
+INSERT INTO `points_record` VALUES (29, 110, 7, '管理员jt', '12345678999', 100, 0, '2022-04-24 22:28:24', 110, 0, 2, '55', NULL);
+INSERT INTO `points_record` VALUES (30, 110, 1, '管理员jt', '12345678999', 1, 1, '2022-04-24 22:36:43', 110, 28, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (31, 110, 7, '管理员jt', '12345678999', 20, 0, '2022-04-24 22:39:13', 110, 0, 3, '-20', 'test');
 
 -- ----------------------------
 -- Table structure for position_list
@@ -319,6 +403,23 @@ CREATE TABLE `position_list`  (
 -- ----------------------------
 -- Records of position_list
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for reason_list
+-- ----------------------------
+DROP TABLE IF EXISTS `reason_list`;
+CREATE TABLE `reason_list`  (
+  `reason_id` int NOT NULL AUTO_INCREMENT,
+  `reason_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `reason_number` int NULL DEFAULT NULL,
+  PRIMARY KEY (`reason_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of reason_list
+-- ----------------------------
+INSERT INTO `reason_list` VALUES (2, '抵扣100元优惠券', 50);
+INSERT INTO `reason_list` VALUES (3, 'test', 20);
 
 -- ----------------------------
 -- Table structure for recruit_list
@@ -342,7 +443,7 @@ CREATE TABLE `recruit_list`  (
   `enabled` tinyint(1) NULL DEFAULT NULL COMMENT '是否过期',
   `hr_id` int NULL DEFAULT NULL COMMENT 'hr的用户id',
   PRIMARY KEY (`recruit_Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci COMMENT = '招聘岗位信息表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci COMMENT = '招聘岗位信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recruit_list
@@ -354,8 +455,15 @@ INSERT INTO `recruit_list` VALUES (11, '职位111', NULL, 0, '杭州', NULL, NUL
 INSERT INTO `recruit_list` VALUES (12, '职位111', NULL, 0, '杭州', NULL, NULL, 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1, 111);
 INSERT INTO `recruit_list` VALUES (13, '职位111', NULL, 0, '杭州', NULL, '2021-04-07', 22, '哈哈哈哈哈哈\n充满浪漫v发', NULL, 0, 0, 0, 0, 1, 112);
 INSERT INTO `recruit_list` VALUES (14, 'qq', NULL, 0, '上海', NULL, '2021-04-13', 0, '1、负责抖音电商红人美妆店铺的运营工作，助力红人店铺发展；\r\n              2、设计美妆红人店铺直播解决方案，根据行业发展特征和消费者洞察力，输出美妆红人店铺打法及落地；\r\n              3、和主播进行美妆货品结构方向的沟通，帮助红人通过直播加速商品流通。', NULL, 0, 0, 0, 2, 0, 112);
-INSERT INTO `recruit_list` VALUES (15, '', NULL, 0, '', '2021-05-12', '2021-05-13', 0, '', NULL, 0, 0, 0, 0, 1, 110);
-INSERT INTO `recruit_list` VALUES (16, '前端事故多发', NULL, 1, '北京', '2021-05-12', '2021-05-12', 5, '是高度季后赛的公开播放^与萨给丢药ASGD', NULL, 0, 0, 0, 1, 1, 110);
+INSERT INTO `recruit_list` VALUES (16, '前端事故多发', NULL, 3, '北京', '2021-05-12', '2021-05-12', 5, '是高度季后赛的公开播放^与萨给丢药ASGD', NULL, 0, 0, 0, 1, 1, 110);
+INSERT INTO `recruit_list` VALUES (17, '发布职位1', NULL, 0, '杭州', '2021-05-14', '2021-05-14', 0, '', NULL, 0, 0, 0, 1, 1, 110);
+INSERT INTO `recruit_list` VALUES (18, '十多个', NULL, 2, '北京', '2021-05-14', '2021-05-18', 1, ' 1、负责web前端架构设计和研发； 2、熟悉前端工程的构建、打包、部署、能够熟练使用webpacKgulp等打包构建工具； 3、项目实施与跟进。 任职要求 1、2年以上前端开发经验，熟悉CSS HTML JS等系列技术栈； 2、有丰富的Vue.js项目开发经验。熟练使用 *** 等组件', '豆腐', 0, 0, 0, 2, 1, 0);
+INSERT INTO `recruit_list` VALUES (20, '前端实习生', NULL, 0, '杭州', '2021-05-15', '2021-05-19', 5, '受到国家赋予GS^2、u和公司都要发给物业\n3、u十个地方呀公司员工SHU\n4、韩国首都与法国', '前端实习生（3-4k)(6个月）（双休）', 0, 0, 0, 4, 1, 116);
+INSERT INTO `recruit_list` VALUES (21, '测试实习生', NULL, 0, '北京', '2021-05-15', '2021-05-15', 1, '1.还是解放军^2.nvosnsjjo\n3.主要负责公司。。。。', '急招！嵌入式实习开发生', 0, 0, 0, 5, 1, 116);
+INSERT INTO `recruit_list` VALUES (22, '产品运营实习生', NULL, 0, '杭州', '2021-05-15', '2021-05-03', 3, '1.会阿森纳梵高^2.已收款v和v看\n3.u愿意iii', '内容策划实习生（3个月）', 0, 0, 0, 4, 1, 116);
+INSERT INTO `recruit_list` VALUES (23, '人事', NULL, 1, '广州', '2021-05-15', '2021-05-04', 1, '1.hi就送货方式^2.和哈哗啦啦啦啦啦啦啦\n3.哈哈哈哈哈哈哈哈哈哈', 'HR招聘', 0, 0, 0, 4, 1, 116);
+INSERT INTO `recruit_list` VALUES (24, '前端工程师', NULL, 0, '北京', '2021-05-15', '2021-05-21', 20, '1.代表第v吧^2.等哈都不阿布', '前端(10k-15k)', 0, 0, 0, 5, 1, 116);
+INSERT INTO `recruit_list` VALUES (25, 'sss', NULL, 0, '', '2021-05-15', NULL, 1, '', 'sss', 0, 0, 0, 0, 1, 110);
 
 -- ----------------------------
 -- Table structure for resumeinfo_list
@@ -397,18 +505,34 @@ CREATE TABLE `resumeinfo_list`  (
   `photo` varchar(255) CHARACTER SET gb2312 COLLATE gb2312_chinese_ci NULL DEFAULT '' COMMENT '照片',
   `resume_type` int NULL DEFAULT NULL COMMENT '简历类型（0普通1人才库2暂存库）',
   `hr_id` int NULL DEFAULT NULL COMMENT 'Hr的用户id',
+  `submit_time` date NULL DEFAULT NULL COMMENT '提交时间',
   PRIMARY KEY (`resume_Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of resumeinfo_list
 -- ----------------------------
-INSERT INTO `resumeinfo_list` VALUES (2, 3, 'sfd', 110, '中国', '汉', '1999-01-01', NULL, 20, 1, '', NULL, '', '', NULL, NULL, NULL, NULL, '', NULL, '0', '', '', NULL, '', NULL, NULL, '', '', '', '', '', '', NULL, 111);
-INSERT INTO `resumeinfo_list` VALUES (3, 4, '1', 0, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 111);
-INSERT INTO `resumeinfo_list` VALUES (4, 4, '张张', 7, '上海', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '东方', '财务', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 111);
-INSERT INTO `resumeinfo_list` VALUES (5, 9, '张章', 110, '北京', NULL, NULL, NULL, NULL, NULL, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '1', '1', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 112);
-INSERT INTO `resumeinfo_list` VALUES (6, 3, 'www', 110, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '自我评价', NULL, NULL, NULL, NULL, NULL, NULL, 111);
-INSERT INTO `resumeinfo_list` VALUES (7, 16, '名字是啥', 110, '北京', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 110);
+INSERT INTO `resumeinfo_list` VALUES (3, 4, '1', 0, '', NULL, NULL, NULL, NULL, 3, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 111, NULL);
+INSERT INTO `resumeinfo_list` VALUES (4, 4, '张张', 7, '上海', NULL, NULL, NULL, NULL, 0, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '东方', '财务', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 111, NULL);
+INSERT INTO `resumeinfo_list` VALUES (5, 9, '张章', 110, '北京', NULL, NULL, NULL, NULL, 0, NULL, 2, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '1', '1', '1', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 112, NULL);
+INSERT INTO `resumeinfo_list` VALUES (7, 16, '名字是啥', 110, '北京', NULL, NULL, NULL, NULL, 2, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 110, NULL);
+INSERT INTO `resumeinfo_list` VALUES (9, 16, 'sad', 110, '', '', NULL, NULL, 45, 3, '', NULL, '', NULL, NULL, '', '', NULL, '', NULL, NULL, NULL, '', '', '', '', NULL, '', '', '', '', '', 'http://localhost:8822/march/file/w7go3o.png', NULL, 110, NULL);
+INSERT INTO `resumeinfo_list` VALUES (14, 14, 'aaaa', 110, '', '', NULL, NULL, NULL, 0, '', NULL, '', NULL, NULL, '', '', NULL, '', NULL, NULL, NULL, '', '', '', '', NULL, '', '', '', '', '', '', NULL, 112, NULL);
+INSERT INTO `resumeinfo_list` VALUES (16, 19, '的发挥', 116, '', '', NULL, NULL, NULL, 1, '', NULL, '', NULL, NULL, '', '', NULL, '', NULL, '123654789', NULL, '', '', '', '', NULL, '', '', '', '', '', '', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (18, 19, '打手犯规W', 116, '', '', NULL, NULL, NULL, 2, '', NULL, '', NULL, NULL, '', '', NULL, '', NULL, '123654789', NULL, '', '', '', '', NULL, '', '', '', '', '', 'http://localhost:8822/march/file/f6hmnh.png', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (20, 19, 'weqw', 110, '', '', NULL, NULL, NULL, 1, '', NULL, '', NULL, NULL, '', '', NULL, '', NULL, '1212', NULL, '', '', '121', '', NULL, '', '', '', '', '', '', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (25, 19, '和组件', 110, '汉', '汉', '2021-05-25', 2, 25, 0, '共青团员', 1, '未婚', NULL, NULL, '四级', '二级', NULL, '', NULL, '123654287', NULL, '公司的v好几个', '就是赌博合法化就', '2658+4974', '已毕业', '2021-05-25', '乐观开朗活剥、爱好跳舞', '按上级汇报', '1、项目写作\n2、制作机器人2015号', '1、2017-2018在杭州野田禾有限公司担任项目助理\n2、2048-5456在未来科技人造公司制作总监', '正自学、管理学、统计学、金融学、计算机科学', 'http://localhost:8822/march/file/w3lngz.png', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (26, 19, '啊啊啊啊', 117, '', '', NULL, NULL, NULL, 0, '', NULL, '', NULL, NULL, '', '', NULL, '', NULL, '', NULL, '', '', '', '', NULL, '', '', '', '', '', '', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (28, 16, '蒋婷', 110, '四川', '汉', '2021-05-04', 2, 23, 1, '共青团员', 3, '未婚', NULL, NULL, '四级', '二级', NULL, '', NULL, '1306758264', NULL, '浙江财经大学东方学院', '信息管理与信息系统', '26028@qq.com', '已毕业', '2021-05-19', '厚薄可爱俏皮\n有一点点害羞\n还很困\n美景生', '1、优秀学生一等将\n2、三好学生\n3、优秀毕业生\n4、省政府奖学金', '哈森高度压根速度还是给定一个撒娇的韩国\n很伤感的歌\n1、上的功夫伊瓜因是高度\n2、是否不应该ASDUYFG\n3\\KSDBJFUHY嘎斯不要放过不要', '2018-2016i速度还附有嘎哈都是浮云刚刚\n2015-5364可接受赴英国AFY\n5012-5328GSDFVIY奥古斯丁与就好像国防部', '1、数据库\n2、java\n3、前端vue框架\n4、沟通学', 'http://localhost:8822/march/file/asfu71.png', NULL, 110, NULL);
+INSERT INTO `resumeinfo_list` VALUES (30, 23, '小张', 117, '', '', '2021-05-05', 1, 13, 1, '', 2, '', NULL, NULL, '', '', NULL, '', NULL, '13567689889', NULL, '', '', '', '在读中', NULL, '', '1.hi大国医阿飞本方法地板\n2.大把时光本地阿布', '', '', '', 'http://localhost:8822/march/file/b5kz7k.png', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (31, 24, '46', 110, '', '', '2022-04-11', 0, NULL, 0, '', NULL, '', NULL, NULL, '', '', NULL, '', NULL, '13067538203', NULL, '', '', '', '', NULL, '', '', '', '', '', '', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (32, 24, '1', 110, '1', '1', '2022-04-27', 0, 1, 0, '共青团员', 3, '未婚', '510722199901192257', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '1', '1', '', NULL, '1', '1', '1', '1', '1', '', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (33, 24, '1', 110, '2', '2', '2022-04-28', 0, 2, 0, '共青团员', 3, '离异', '510722199901192247', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '2', '2', '', NULL, '2', '2', '2', '2', '2', '', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (34, 24, '5326', 110, '1', '1', '2022-04-21', 0, 1, 0, '', 3, '', '987858199625261425', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '1', '1', '', NULL, '1', '1', '1', '1', '1', '', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (35, 24, '1651', 110, '1', '15661', '2022-04-27', 0, 6541, 1, '', 3, '', '123456789123456998', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '1', '6541', '', NULL, '1', '1', '1', '1', '1', '', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (36, 24, '6545546', 110, '222', '125', '2022-04-15', 1, 25, 0, '群众', 1, '未婚', NULL, NULL, '四级', '四级', NULL, '', NULL, '4654654', NULL, '', '555', '555', '在读中', NULL, '5555', '555', '55555', '5555', '55555', '555', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (37, 24, '6545546', 110, '222', '125', '2022-04-15', 1, 25, 1, '群众', 1, '未婚', NULL, NULL, '四级', '四级', NULL, '', NULL, '4654654', NULL, '', '555', '555', '在读中', NULL, '5555', '555', '55555', '5555', '55555', '555', NULL, 116, NULL);
+INSERT INTO `resumeinfo_list` VALUES (38, 24, '6545546', 110, '222', '125', '2022-04-15', 1, 25, 1, '群众', 1, '未婚', NULL, NULL, '四级', '四级', NULL, '', NULL, '4654654', NULL, '', '555', '555', '在读中', NULL, '5555', '555', '55555', '5555', '55555', '555', NULL, 116, '2022-04-20');
 
 -- ----------------------------
 -- Table structure for user
@@ -427,15 +551,16 @@ CREATE TABLE `user`  (
   `birth` datetime NULL DEFAULT NULL COMMENT '生日',
   `sum_points` int NULL DEFAULT NULL COMMENT '积分总值',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 113 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 122 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (2, 'test', '85087738b6c1e1d212683bfafc163853', 'JBba3j5qRykIPJQYTNNH9A==', '测试', '12312312312', '123@123.com', 1, 0, NULL, 0);
-INSERT INTO `user` VALUES (3, 'editor', '8583a2d965d6159edbf65c82d871fa3e', 'MZTe7Qwf9QgXBXrZzTIqJQ==', '编辑', NULL, NULL, 1, 0, NULL, 0);
-INSERT INTO `user` VALUES (110, 'jt', 'b8051c43ad5a9c7acb25f5a6963c0f1e', 'Xb9/1tvJnZ3VfG4lrccUZA==', 'jiangting', '123456789', '123456', 1, 1, NULL, 5);
-INSERT INTO `user` VALUES (111, '11', '0596a32312b41ca27a85c0dc32c883bc', '0uVD8bEuz07OE9DAD55c0g==', '11', '11', '11', 1, 0, NULL, 0);
-INSERT INTO `user` VALUES (112, '1', '66d10be5eb0df4a07fe77e4c6a2ed4fa', 'GqeH2v+9xc9cnaigSbXeEA==', 'my name', '1', '1', 0, 0, NULL, 0);
+INSERT INTO `user` VALUES (110, '管理员jt', 'b8051c43ad5a9c7acb25f5a6963c0f1e', 'Xb9/1tvJnZ3VfG4lrccUZA==', '管理员jt', '12345678999', '123456', 1, 1, '2021-05-22 12:00:00', 159);
+INSERT INTO `user` VALUES (116, 'Hrslt', '0498c124e5b3918fc7146f4949c91bec', 'v8SQUMInl5wLKiBtfBF5Ow==', 'Hr11', '123456789', '2602818429', 1, 0, NULL, 8);
+INSERT INTO `user` VALUES (117, '推荐人wjw', 'c7767ee958107be40d0f133825c93459', 'VRiOa5T1fwhuX6U0aJBEfw==', '推荐人', '157628426', '26581', 0, 0, NULL, 3);
+INSERT INTO `user` VALUES (119, '测试', 'e09cece94d46b7ed2bda07c5f5778edd', 'LV7VvI4Rp7xf67bCa3ht6w==', '测试', '12365498763', '263854', 0, 0, NULL, 0);
+INSERT INTO `user` VALUES (120, '员工1号', 'fd4f3c43ab1fac768170d9bd3f1cc5cd', 'dCq/kgLjS4+Tn1YwB+iYyQ==', '员工1号', '001', '001', 1, 0, NULL, 0);
+INSERT INTO `user` VALUES (121, 'test02', 'a1e0382e2813d42958f77180809fa302', 'axIg6YaT6cdV4wPgVzuJOA==', '123', '456123789', '26355', 1, 0, NULL, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;
