@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 04/05/2022 23:40:25
+ Date: 15/05/2022 17:55:36
 */
 
 SET NAMES utf8mb4;
@@ -100,7 +100,7 @@ CREATE TABLE `admin_role_menu`  (
   `rid` int NULL DEFAULT NULL,
   `mid` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 302 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 355 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_role_menu
@@ -115,13 +115,6 @@ INSERT INTO `admin_role_menu` VALUES (81, 2, 9);
 INSERT INTO `admin_role_menu` VALUES (82, 2, 10);
 INSERT INTO `admin_role_menu` VALUES (211, 10, 1);
 INSERT INTO `admin_role_menu` VALUES (212, 10, 2);
-INSERT INTO `admin_role_menu` VALUES (295, 3, 1);
-INSERT INTO `admin_role_menu` VALUES (296, 3, 2);
-INSERT INTO `admin_role_menu` VALUES (297, 3, 10);
-INSERT INTO `admin_role_menu` VALUES (298, 3, 19);
-INSERT INTO `admin_role_menu` VALUES (299, 3, 17);
-INSERT INTO `admin_role_menu` VALUES (300, 3, 20);
-INSERT INTO `admin_role_menu` VALUES (301, 3, 24);
 INSERT INTO `admin_role_menu` VALUES (324, 9, 1);
 INSERT INTO `admin_role_menu` VALUES (325, 9, 2);
 INSERT INTO `admin_role_menu` VALUES (326, 9, 4);
@@ -146,6 +139,13 @@ INSERT INTO `admin_role_menu` VALUES (344, 1, 20);
 INSERT INTO `admin_role_menu` VALUES (345, 1, 24);
 INSERT INTO `admin_role_menu` VALUES (346, 1, 21);
 INSERT INTO `admin_role_menu` VALUES (347, 1, 23);
+INSERT INTO `admin_role_menu` VALUES (348, 3, 1);
+INSERT INTO `admin_role_menu` VALUES (349, 3, 2);
+INSERT INTO `admin_role_menu` VALUES (350, 3, 10);
+INSERT INTO `admin_role_menu` VALUES (351, 3, 19);
+INSERT INTO `admin_role_menu` VALUES (352, 3, 17);
+INSERT INTO `admin_role_menu` VALUES (353, 3, 20);
+INSERT INTO `admin_role_menu` VALUES (354, 3, 24);
 
 -- ----------------------------
 -- Table structure for admin_role_permission
@@ -158,7 +158,7 @@ CREATE TABLE `admin_role_permission`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_role_permission_role_1`(`rid`) USING BTREE,
   INDEX `fk_role_permission_permission_1`(`pid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 146 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 152 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_role_permission
@@ -180,7 +180,7 @@ CREATE TABLE `admin_user_role`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_operator_role_operator_1`(`uid`) USING BTREE,
   INDEX `fk_operator_role_role_1`(`rid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 120 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 133 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin_user_role
@@ -209,9 +209,13 @@ INSERT INTO `admin_user_role` VALUES (101, 129, 9);
 INSERT INTO `admin_user_role` VALUES (102, 130, 3);
 INSERT INTO `admin_user_role` VALUES (115, 134, 3);
 INSERT INTO `admin_user_role` VALUES (116, 132, 3);
-INSERT INTO `admin_user_role` VALUES (117, 131, 9);
 INSERT INTO `admin_user_role` VALUES (118, 110, 1);
 INSERT INTO `admin_user_role` VALUES (119, 133, 9);
+INSERT INTO `admin_user_role` VALUES (121, 136, 3);
+INSERT INTO `admin_user_role` VALUES (127, 137, 3);
+INSERT INTO `admin_user_role` VALUES (128, 135, 9);
+INSERT INTO `admin_user_role` VALUES (130, 138, 1);
+INSERT INTO `admin_user_role` VALUES (132, 131, 9);
 
 -- ----------------------------
 -- Table structure for admins
@@ -224,7 +228,7 @@ CREATE TABLE `admins`  (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admins
@@ -247,7 +251,7 @@ CREATE TABLE `book`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_book_category_on_cid`(`cid`) USING BTREE,
   CONSTRAINT `fk_book_category_on_cid` FOREIGN KEY (`cid`) REFERENCES `category` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 109 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 70 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of book
@@ -309,7 +313,7 @@ CREATE TABLE `integral_seting`  (
   `success_in_value` int NULL DEFAULT NULL,
   `success_in_limited` int NULL DEFAULT NULL,
   PRIMARY KEY (`integral_seting_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of integral_seting
@@ -329,7 +333,7 @@ CREATE TABLE `jotter_article`  (
   `article_cover` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `article_date` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jotter_article
@@ -359,7 +363,7 @@ CREATE TABLE `points_record`  (
   PRIMARY KEY (`points_id`) USING BTREE,
   INDEX `积分外键2`(`dealer`) USING BTREE,
   INDEX `积分外键1`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 63 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 85 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of points_record
@@ -386,6 +390,20 @@ INSERT INTO `points_record` VALUES (67, 134, 3, 'ZWY', '17367892345', 5, 1, '202
 INSERT INTO `points_record` VALUES (68, 134, 1, 'ZWY', '17367892345', 1, 1, '2022-05-04 21:47:08', 133, 53, 0, NULL, NULL);
 INSERT INTO `points_record` VALUES (69, 134, 1, 'ZWY', '17367892345', 1, 1, '2022-05-04 23:07:10', 133, 54, 0, NULL, NULL);
 INSERT INTO `points_record` VALUES (70, 134, 2, 'ZWY', '17367892345', 3, 1, '2022-05-04 23:07:11', 133, 54, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (71, 134, 3, 'ZWY', '17367892345', 5, 1, '2022-05-07 21:04:57', 133, 51, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (72, 137, 1, '张文姚', '13666482658', 1, 1, '2022-05-08 08:34:55', 135, 59, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (73, 137, 2, '张文姚', '13666482658', 3, 1, '2022-05-08 08:35:00', 135, 59, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (74, 137, 1, '张文姚', '13666482658', 1, 1, '2022-05-08 08:48:41', 135, 60, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (75, 137, 2, '张文姚', '13666482658', 3, 1, '2022-05-08 08:48:44', 135, 60, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (76, 137, 3, '张文姚', '13666482658', 5, 1, '2022-05-08 08:48:46', 135, 60, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (77, 137, 7, '张文姚', '13666482657', 4, 0, '2022-05-11 16:24:28', 135, 0, 2, '成功抵扣', '零食大礼包');
+INSERT INTO `points_record` VALUES (78, 137, 1, '张文姚YG', '13666482657', 1, 1, '2022-05-11 16:38:36', 135, 61, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (79, 137, 2, '张文姚YG', '13666482657', 3, 1, '2022-05-11 16:38:41', 135, 61, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (80, 137, 1, '张文姚YG', '13666482657', 1, 1, '2022-05-11 17:03:50', 135, 62, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (81, 137, 2, '张文姚YG', '13666482657', 3, 1, '2022-05-11 17:05:14', 135, 62, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (82, 137, 3, '张文姚YG', '13666482657', 5, 1, '2022-05-11 17:05:31', 135, 62, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (83, 137, 1, '张文姚YG', '13666482657', 1, 1, '2022-05-11 17:09:00', 135, 63, 0, NULL, NULL);
+INSERT INTO `points_record` VALUES (84, 137, 1, '张文姚YG', '13666482657', 1, 1, '2022-05-14 11:00:48', 135, 67, 0, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for position_list
@@ -397,7 +415,7 @@ CREATE TABLE `position_list`  (
   `position_belong_apartment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `position_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`postion_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of position_list
@@ -412,7 +430,7 @@ CREATE TABLE `reason_list`  (
   `reason_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `reason_number` int NULL DEFAULT NULL,
   PRIMARY KEY (`reason_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of reason_list
@@ -424,6 +442,9 @@ INSERT INTO `reason_list` VALUES (5, '洗衣机', 13);
 INSERT INTO `reason_list` VALUES (6, '公司餐厅餐券一张', 1);
 INSERT INTO `reason_list` VALUES (7, '厨房用具', 2);
 INSERT INTO `reason_list` VALUES (8, '床上三件套', 5);
+INSERT INTO `reason_list` VALUES (9, '带薪休假一天', 8);
+INSERT INTO `reason_list` VALUES (10, '代步小电驴', 30);
+INSERT INTO `reason_list` VALUES (11, '超市消费券300元', 6);
 
 -- ----------------------------
 -- Table structure for recruit_list
@@ -447,19 +468,25 @@ CREATE TABLE `recruit_list`  (
   `enabled` tinyint(1) NULL DEFAULT NULL COMMENT '是否过期',
   `hr_id` int NULL DEFAULT NULL COMMENT 'hr的用户id',
   `rc_salary_welfare` varchar(800) CHARACTER SET gb2312 COLLATE gb2312_chinese_ci NULL DEFAULT NULL COMMENT '薪资福利',
+  `resume_num` int NULL DEFAULT NULL COMMENT '已投递简历数',
   PRIMARY KEY (`recruit_Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci COMMENT = '招聘岗位信息表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci COMMENT = '招聘岗位信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recruit_list
 -- ----------------------------
-INSERT INTO `recruit_list` VALUES (27, '搞笑达人', NULL, 0, '杭州', '2022-04-27', '2022-04-30', 20, '1、呢奴役高速与地方规划是个好地方^2、黑色经典发链接卡萨丁副科级\n3、科技收到回复你看见啦收到回复你\n4、深刻的解放半年了卡就是地方那节课', '哈哈哈哈', 0, 0, 0, 5, 1, 110, '时间的回复里煎熬好的开发计划是复活卡拉JSHFKJHAKJSFSHAs空间啊可接受的空间安徽省DKJAHSLKDJHASKLDHA蓝思科技电话了卡JSHDAKJSHDLJKAHSDLJHA数量抠脚大汉J几点回家过分了客户数量的快感几十块的发挥空间');
-INSERT INTO `recruit_list` VALUES (28, '465465465', NULL, 0, '北京', '2022-04-27', '2022-04-13', 1, '1、借花献佛vdbgkjhs\n2、还记得想办法kg贾湖骨笛\n3、较好的板块房价会告诉\n4、较好的分布结构合理不舍得', '讲不听', 0, 0, 0, 4, 1, 110, '453465465465465555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555');
-INSERT INTO `recruit_list` VALUES (29, '4444', NULL, 3, '北京', '2022-04-30', '2022-04-19', 1, '5555', '44444', 0, 0, 0, 3, 1, 129, '5555');
-INSERT INTO `recruit_list` VALUES (30, '教练', NULL, 2, '杭州', '2022-04-30', '2022-07-01', 1, '有打过相关比赛者优先', '篮球教练', 0, 0, 0, 3, 1, 131, '五险一金，双休');
-INSERT INTO `recruit_list` VALUES (31, 'JAVA开发', NULL, 3, '杭州', '2022-05-04', '2022-05-31', 3, '获得过相关比赛奖励的优先；\n有相关实习经验的优先；\n能有一定的创新意识；\n具备良好的开发潜质。', 'JAVA开发', 0, 0, 0, 4, 0, 133, '薪资9K-13K；\n双休，国家法定节假日休；\n春假，秋假，公司不定期团建；\n五险一金，年终奖。');
-INSERT INTO `recruit_list` VALUES (33, 'test', NULL, 1, '北京', '2022-05-04', '2022-07-14', 6, 'test', 'test', 0, 0, 0, 4, 1, 133, 'test');
-INSERT INTO `recruit_list` VALUES (46, 'fgsdg', NULL, 3, '北京', '2022-05-04', '2022-07-15', 6, 'xdvds', 'ddddddddddfgrb', 0, 0, 0, 4, 1, 133, 'dsgvsg');
+INSERT INTO `recruit_list` VALUES (27, '搞笑达人', NULL, 0, '杭州', '2022-04-27', '2022-04-30', 20, '1、呢奴役高速与地方规划是个好地方^2、黑色经典发链接卡萨丁副科级\n3、科技收到回复你看见啦收到回复你\n4、深刻的解放半年了卡就是地方那节课', '哈哈哈哈', 0, 0, 0, 5, 1, 110, '时间的回复里煎熬好的开发计划是复活卡拉JSHFKJHAKJSFSHAs空间啊可接受的空间安徽省DKJAHSLKDJHASKLDHA蓝思科技电话了卡JSHDAKJSHDLJKAHSDLJHA数量抠脚大汉J几点回家过分了客户数量的快感几十块的发挥空间', 0);
+INSERT INTO `recruit_list` VALUES (28, '465465465', NULL, 0, '北京', '2022-04-27', '2022-04-13', 1, '1、借花献佛vdbgkjhs\n2、还记得想办法kg贾湖骨笛\n3、较好的板块房价会告诉\n4、较好的分布结构合理不舍得', '讲不听', 0, 0, 0, 4, 1, 110, '453465465465465555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555', 0);
+INSERT INTO `recruit_list` VALUES (29, '4444', NULL, 3, '北京', '2022-04-30', '2022-04-19', 1, '5555', '44444', 0, 0, 0, 3, 1, 129, '5555', 0);
+INSERT INTO `recruit_list` VALUES (30, '教练', NULL, 2, '杭州', '2022-04-30', '2022-07-01', 1, '有打过相关比赛者优先', '篮球教练', 0, 0, 0, 3, 1, 131, '五险一金，双休', 0);
+INSERT INTO `recruit_list` VALUES (31, 'JAVA开发', NULL, 3, '杭州', '2022-05-04', '2022-05-31', 3, '获得过相关比赛奖励的优先；\n有相关实习经验的优先；\n能有一定的创新意识；\n具备良好的开发潜质。', 'JAVA开发', 0, 0, 0, 4, 0, 133, '薪资9K-13K；\n双休，国家法定节假日休；\n春假，秋假，公司不定期团建；\n五险一金，年终奖。', 3);
+INSERT INTO `recruit_list` VALUES (33, 'test', NULL, 1, '北京', '2022-05-04', '2022-07-14', 6, 'test', 'test', 0, 0, 0, 4, 1, 133, 'test', 1);
+INSERT INTO `recruit_list` VALUES (46, 'fgsdg', NULL, 3, '北京', '2022-05-04', '2022-07-15', 6, 'xdvds', 'ddddddddddfgrb', 0, 0, 0, 4, 1, 133, 'dsgvsg', 0);
+INSERT INTO `recruit_list` VALUES (51, '产品经理', NULL, 1, '北京', '2022-05-07', '2022-09-10', 6, '有相关工作经验者优先；\n有获得过相关比赛证书者优先；\n性格外向者优先', '产品经理', 0, 0, 0, 4, 1, 135, '五险一金；\n法定节假日正常休息 ；\n工资面议；\n不定期团建', 1);
+INSERT INTO `recruit_list` VALUES (52, '游戏开发', NULL, 2, '上海', '2022-05-07', '2022-10-06', 2, '有工作经验者优先；\n英语四六级通过者优先；\n热爱游戏者优先', '游戏开发', 0, 0, 0, 4, 1, 135, '正常节假日休息；\n五险一金；\n薪资8K-13K；\n春，秋假集体出游', 1);
+INSERT INTO `recruit_list` VALUES (53, '测试运维', NULL, 3, '杭州', '2022-05-08', '2022-07-02', 5, '有相关经验者优先；\n能吃苦耐劳者优先；\n', '测试', 0, 0, 0, 4, 1, 135, '薪资8K-15K;\n五险一金；\n每日提供下午茶；\n正常双休；\n餐补和住宿补贴', 1);
+INSERT INTO `recruit_list` VALUES (54, '前端开发', NULL, 2, '北京', '2022-05-11', '2022-08-18', 3, '相关工作经历；\n熟练运用框架；\n较强开发能力；\n吃客肯干精神', 'JAVA前端', 0, 0, 0, 4, 1, 135, '薪资7K-12K；\n不定期公司聚会；\n周末双休，国家节假日休息', 2);
+INSERT INTO `recruit_list` VALUES (55, 'JAVA后端', NULL, 1, '杭州', '2022-05-12', '2022-06-15', 1, '相关专业者优先；\n有工作经历者优先；\n代码能力强者优先', '后端开发', 0, 0, 0, 4, 1, 135, '工资面议；\n正常节假日休息；\n公司年会福利多；\n餐补，交通补贴，住宿补贴', 2);
 
 -- ----------------------------
 -- Table structure for resumeinfo_list
@@ -503,7 +530,7 @@ CREATE TABLE `resumeinfo_list`  (
   `hr_id` int NULL DEFAULT NULL COMMENT 'Hr的用户id',
   `submit_time` date NULL DEFAULT NULL COMMENT '提交时间',
   PRIMARY KEY (`resume_Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of resumeinfo_list
@@ -515,12 +542,19 @@ INSERT INTO `resumeinfo_list` VALUES (45, 29, '张文姚', 130, '上饶', '汉',
 INSERT INTO `resumeinfo_list` VALUES (48, 30, '王三', 132, '648383', '好的', '1988-03-01', 1, 23, 3, '共青团员', 3, '未婚', '362329199807095235', NULL, NULL, NULL, NULL, '', NULL, '14253412589', NULL, NULL, '你的经常', '54468638', '', NULL, '恒大华府', '市场经济', '呼吸急促', '核算检查', '姐夫粗', '', NULL, 131, '2022-04-30');
 INSERT INTO `resumeinfo_list` VALUES (49, 31, '张杰', 134, '江西', '汉族', '1998-04-07', 1, 24, 3, '共青团员', 3, '未婚', NULL, NULL, 'CET-6', '二级', NULL, '', NULL, '13666482729', NULL, '浙江大学', '计算机科学与技术', '12345677@qq.com', '已毕业', '2022-07-01', '良好', 'ACM竞赛省一等奖；\n蓝桥杯竞赛二等奖；\n程序设计大赛二等奖\n优秀毕业生，国家奖学金', 'TEST', '阿里巴巴实习', '熟练掌握JAVA开发技术；', 'http://localhost:8810/march/file/u99qon.PNG', NULL, 133, '2022-05-04');
 INSERT INTO `resumeinfo_list` VALUES (50, 31, '王道', 134, '江西上饶', '汉族', NULL, 1, 24, 3, '共青团员', 3, '未婚', '362526199807065312', NULL, NULL, NULL, NULL, '', NULL, '17376532145', NULL, NULL, '软件工程', '17431272754@qq.com', '', NULL, '无', '省政府奖学金\n学业一等奖学金', '无', '江西南昌软件大赛一等奖', '无', '', NULL, 133, '2022-05-04');
-INSERT INTO `resumeinfo_list` VALUES (51, 31, 'test', 134, '上海', '汉族', '1997-05-06', 0, 25, 2, '共青团员', 3, '未婚', '362329199705061236', NULL, 'CET-6', '二级', NULL, '', NULL, '13652854569', NULL, '同济大学', '网络空间与安全', '1943172648@qq.com', '已毕业', '2022-06-01', 'test', 'test', 'test', 'test', 'teat', '', NULL, 133, '2022-05-04');
+INSERT INTO `resumeinfo_list` VALUES (51, 31, 'test', 134, '上海', '汉族', '1997-05-06', 0, 25, 3, '共青团员', 3, '未婚', '362329199705061236', NULL, 'CET-6', '二级', NULL, '', NULL, '13652854569', NULL, '同济大学', '网络空间与安全', '1943172648@qq.com', '已毕业', '2022-06-01', 'test', 'test', 'test', 'test', 'teat', '', NULL, 133, '2022-05-04');
 INSERT INTO `resumeinfo_list` VALUES (52, 32, '张三丰', 134, '江苏南京', '汉族', '1999-06-07', 1, 23, 3, '共青团员', 3, '未婚', '362328199906071254', NULL, 'CET-6', '三级', NULL, '', NULL, '13652895641', '广东省广州市白云区', '广州大学', '软件工程', '1258985445@qq.com', '已毕业', '2022-05-18', '团队协作能力强，创新能力强，知识储备资源丰富', 'ACM银牌', '人工智能实验', '网易实习6个月', '竞赛经验丰富', '', NULL, 133, '2022-05-04');
 INSERT INTO `resumeinfo_list` VALUES (53, 32, '林俊杰', 134, '浙江杭州', '汉族', '1998-08-01', 1, 24, 1, '共青团员', 3, '未婚', '362329199807051234', NULL, NULL, NULL, NULL, '', NULL, '17367451423', NULL, NULL, '计算机科学与技术', '1945723415@qq.com', '', NULL, '抗压性强，自我创新能力强', '竞赛金牌\n程序设计金牌\n省优秀毕业生', '大数据开发', '腾讯实习半年', '熟练使用vue，springboot……', '', NULL, 133, '2022-05-04');
 INSERT INTO `resumeinfo_list` VALUES (54, 33, 'test', 134, '江西上饶', '汉族', '1998-06-09', 0, 24, 2, '共青团员', 3, '未婚', '362325199806095412', NULL, 'CET-6', '二级', NULL, '', NULL, '15845698745', '上海市黄浦区', '复旦大学', '软件工程', '142453@qq.com', '已毕业', '2022-05-09', 'test', 'test', 'test', 'test', 'test', '', NULL, 133, '2022-05-04');
 INSERT INTO `resumeinfo_list` VALUES (55, 39, 'ffffffffff', 134, '江西', '汉族', '1999-05-05', 0, 24, 0, '共青团员', 3, '未婚', '362563199905052145', NULL, 'CET-6', '二级', NULL, '', NULL, '15698745632', '上海黄浦', '浙江大学', '计算机科学与技术', '4524532qq.com', '已毕业', '2022-05-23', '活动火爆', '红红火火恍恍惚惚', '果然是根本', '梵蒂冈地方改变', '干饭干饭', '', NULL, 133, '2022-05-04');
 INSERT INTO `resumeinfo_list` VALUES (56, 39, 'ffffffffff', 134, '江西', '汉族', '1999-05-05', 0, 24, 0, '共青团员', 3, '未婚', '362563199905052145', NULL, 'CET-6', '二级', NULL, '', NULL, '15698745632', '上海黄浦', '浙江大学', '计算机科学与技术', '4524532qq.com', '已毕业', '2022-05-23', '活动火爆', '红红火火恍恍惚惚', '果然是根本', '梵蒂冈地方改变', '干饭干饭', '', NULL, 133, '2022-05-04');
+INSERT INTO `resumeinfo_list` VALUES (59, 52, '周强', 137, '江西南昌', '汉族', '1998-07-07', 1, 24, 2, '共青团员', 3, '未婚', '36232119980709+2512', NULL, 'CET-6', '二级', NULL, '', NULL, '17658956541', '浙江省杭州市钱塘区下沙宝龙广场', '浙江工商大学', '计算机科学与技术', '125698547@qq.com', '已毕业', '2022-06-09', '性格开朗，乐观；\n有强烈的团队意识；\n能吃苦耐劳；\n刻苦钻研精神', '国家奖学金；\nACM银牌；\n学业一等奖学金', '暂无', '网易实习半年', '有开拓的编程思想；\n熟练使用Vue，springboot等；\n', '', NULL, 135, '2022-05-08');
+INSERT INTO `resumeinfo_list` VALUES (60, 51, '林书豪', 137, '上海市浦东新区', '汉族', '1998-05-06', 1, 24, 3, '党员', 3, '未婚', '362321199805062153', NULL, NULL, NULL, NULL, '', NULL, '17335689632', '浙江省杭州市西湖区', '上海交通大学', '软件工程', '1735425782@qq.com', '已毕业', NULL, '积极开朗活泼乐观', '省政府奖学金\n技能竞赛', '暂无', '在外贸公司担任销售岗位', '擅长沟通', '', NULL, 135, '2022-05-08');
+INSERT INTO `resumeinfo_list` VALUES (61, 54, '李林', 137, '浙江嘉兴', '汉族', '1999-02-09', 1, 23, 2, '党员', 3, '未婚', '332514199902092365', NULL, 'CET-6', '三级', NULL, '', NULL, '18767952365', '浙江省金华市义乌市国际商贸城A期', '浙江工商大学', '软件工程', '1943724854', '已毕业', '2022-07-01', '吃苦耐劳；\n懂得创新；\n代码能力良好；\n集体荣誉感强', '国家奖学金；\n学业奖学金；\n程序竞赛一等奖', '无', '在A厂担任前端开发五个月；\n在B厂与同事一起解决了一些内部技术问题', '熟练运用vue等框架', '', NULL, 135, '2022-05-11');
+INSERT INTO `resumeinfo_list` VALUES (62, 54, '汪洋', 137, '江西南昌', '汉族', '1998-05-06', 1, 24, 3, '党员', 3, '未婚', '362523199805065231', NULL, NULL, NULL, NULL, '', NULL, '17376541423', '江西省南昌市红谷滩区', '南昌大学', '计算机应用技术', '1941245325@qq.com', '已毕业', NULL, '积极开朗活泼乐观\n公司荣誉感至上\n肯吃苦耐干', '省政府奖学金\n省优秀毕业生\n英语四六级', '无', '在阿里担任过三个月实习生', '熟练运用前端框架', '', NULL, 135, '2022-05-11');
+INSERT INTO `resumeinfo_list` VALUES (66, 55, '周成', 137, '江西上饶', '汉族', '1996-07-17', 0, 26, 0, '共青团员', 4, '未婚', '362329199607175236', NULL, 'CET-6', '四级', NULL, '', NULL, '15225632547', '江西省上饶市余干县', '南京大学', '软件工程', '1526587456@qq.com', '已毕业', '2022-06-15', '自律性强，自学性强。\n公司荣誉感强；\n乐观开朗，积极向上\n吃苦耐劳', '南京大学优秀毕业研究生；\n研究生国家奖学金；\n江苏省大学生程序竞赛金牌', '给母校开发了一款疫情下的校园通APP,\n用于院校和各部门之间的信息互递，\n累计下载量超过6K，目前累计更新5个版本，\n广泛收到好评。', '在A互联网大厂实习半年；\n在B互联网公司担任技术部门主管助理；\n在C公司一同参与研发核心技术；\n在D公司担任开发小组长', '发表一篇SCI；\n精通JAVA编程\n熟练使用后端框架', 'http://localhost:8810/march/file/7t6drv.jpg', NULL, 135, '2022-05-12');
+INSERT INTO `resumeinfo_list` VALUES (67, 55, '赵子龙', 137, '江西南昌', '汉族', '1998-07-08', 1, 24, 1, '党员', 3, '未婚', '362514199807088521', NULL, NULL, NULL, NULL, '', NULL, '17375632587', '江西省南昌市红谷滩区', '南昌大学', '计算机科学与技术', '1737542145@qq.com', '已毕业', NULL, '积极开朗\n吃苦耐劳\n刻苦钻研\n勤奋好学', '南昌市大学生程序竞赛一等奖\n省政府奖学金\n学业奖学金\n四六级证书', '无', '在一家上市公司担任技术开发人员', '熟练运用Java框架', '', NULL, 135, '2022-05-13');
+INSERT INTO `resumeinfo_list` VALUES (68, 53, '李生', 137, '浙江金华', '汉族', '1997-05-06', 0, 25, 0, '党员', 3, '未婚', '362329199705061423', NULL, NULL, NULL, NULL, '', NULL, '13758693214', '浙江省金华市义乌市佛堂镇', '浙江工商大学', '人工智能', '17658362356@qq.com', '已毕业', NULL, '肯吃苦\n有集体荣誉感\n喜欢创新', '国家奖学金\n四六级证书\n程序设计大赛金牌', '无', '在A公司实习半年', '熟练运用vue等框架\n代码能力强', '', NULL, 135, '2022-05-13');
 
 -- ----------------------------
 -- Table structure for user
@@ -539,7 +573,7 @@ CREATE TABLE `user`  (
   `birth` datetime NULL DEFAULT NULL COMMENT '生日',
   `sum_points` int NULL DEFAULT NULL COMMENT '积分总值',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 135 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 139 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user
@@ -548,6 +582,10 @@ INSERT INTO `user` VALUES (110, '管理员zwl', '202d619875251df0bfff6be5f0a188e
 INSERT INTO `user` VALUES (131, 'hrwenyao', '51a8fd40baf7463f2614bfcf1431d2d9', '4ibKOXXFLmpPUAwnBD60iw==', 'wenyao', '17376573314', '1943172647@qq.com', 1, 0, NULL, 0);
 INSERT INTO `user` VALUES (132, '员工文瑶', 'afbd3bad0cf24b40f7ba5b622677478d', 'QRvdV6wiPN5vOnGNY0CO3g==', '文瑶', '17323654789', '1943172647@qq.com', 1, 0, NULL, 19);
 INSERT INTO `user` VALUES (133, 'HR张三', '021abd8d3fb8f0e0736f40a50a5251ac', 'i/Wp2GAeKToMT/rayvQzgQ==', '张三', '17376573321', '1943214567@qq.com', 1, 0, NULL, 0);
-INSERT INTO `user` VALUES (134, '员工ZWY', '011807a5f775d132a92f602de7ea6b7a', 'PJNKszBooU/krmdgLmZkOA==', 'ZWY', '17367892345', '17656783211', 1, 0, NULL, 37);
+INSERT INTO `user` VALUES (134, '员工ZWY', '011807a5f775d132a92f602de7ea6b7a', 'PJNKszBooU/krmdgLmZkOA==', 'ZWY', '17367892345', '17656783211', 1, 0, NULL, 42);
+INSERT INTO `user` VALUES (135, 'HR张文姚', '943b203f66ef194f9d6a877abcf29acf', 'qkpnWIJBfWjwXqAEiUCyOA==', '张文姚hr', '17376573366', '1943175625@qq.com', 1, 0, NULL, 0);
+INSERT INTO `user` VALUES (136, '账号注册员工Zwy', 'fdd0bd821b7e8c5d187a438271728ce0', 'QkiL+nTrhIxcIhLsb2Msag==', 'Zwy', '17376579632', '1923172584@qq.com', 1, 0, NULL, 0);
+INSERT INTO `user` VALUES (137, '员工张文姚', '738170f97c1f06ee35f49e6611372dc7', 'ukUp4LP3DCmvqWCdDzSpOw==', '张文姚YG', '13666482657', '1583172589@qq.com', 1, 0, '1999-06-06 00:00:00', 32);
+INSERT INTO `user` VALUES (138, '管理员张文姚', '43a7e3a7e717974be1e1ab27c65f6438', 'b0nobcgt7VNYifes9+eCdA==', '张文姚gly', '17356987456', '1945698741@qq.com', 1, 0, NULL, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;
