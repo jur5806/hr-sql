@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 15/05/2022 17:55:36
+ Date: 21/05/2022 17:14:23
 */
 
 SET NAMES utf8mb4;
@@ -228,7 +228,7 @@ CREATE TABLE `admins`  (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admins
@@ -251,7 +251,7 @@ CREATE TABLE `book`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_book_category_on_cid`(`cid`) USING BTREE,
   CONSTRAINT `fk_book_category_on_cid` FOREIGN KEY (`cid`) REFERENCES `category` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 70 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 109 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of book
@@ -333,7 +333,7 @@ CREATE TABLE `jotter_article`  (
   `article_cover` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `article_date` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jotter_article
@@ -415,7 +415,7 @@ CREATE TABLE `position_list`  (
   `position_belong_apartment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `position_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`postion_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of position_list
@@ -470,13 +470,11 @@ CREATE TABLE `recruit_list`  (
   `rc_salary_welfare` varchar(800) CHARACTER SET gb2312 COLLATE gb2312_chinese_ci NULL DEFAULT NULL COMMENT '薪资福利',
   `resume_num` int NULL DEFAULT NULL COMMENT '已投递简历数',
   PRIMARY KEY (`recruit_Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci COMMENT = '招聘岗位信息表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci COMMENT = '招聘岗位信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of recruit_list
 -- ----------------------------
-INSERT INTO `recruit_list` VALUES (27, '搞笑达人', NULL, 0, '杭州', '2022-04-27', '2022-04-30', 20, '1、呢奴役高速与地方规划是个好地方^2、黑色经典发链接卡萨丁副科级\n3、科技收到回复你看见啦收到回复你\n4、深刻的解放半年了卡就是地方那节课', '哈哈哈哈', 0, 0, 0, 5, 1, 110, '时间的回复里煎熬好的开发计划是复活卡拉JSHFKJHAKJSFSHAs空间啊可接受的空间安徽省DKJAHSLKDJHASKLDHA蓝思科技电话了卡JSHDAKJSHDLJKAHSDLJHA数量抠脚大汉J几点回家过分了客户数量的快感几十块的发挥空间', 0);
-INSERT INTO `recruit_list` VALUES (28, '465465465', NULL, 0, '北京', '2022-04-27', '2022-04-13', 1, '1、借花献佛vdbgkjhs\n2、还记得想办法kg贾湖骨笛\n3、较好的板块房价会告诉\n4、较好的分布结构合理不舍得', '讲不听', 0, 0, 0, 4, 1, 110, '453465465465465555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555', 0);
 INSERT INTO `recruit_list` VALUES (29, '4444', NULL, 3, '北京', '2022-04-30', '2022-04-19', 1, '5555', '44444', 0, 0, 0, 3, 1, 129, '5555', 0);
 INSERT INTO `recruit_list` VALUES (30, '教练', NULL, 2, '杭州', '2022-04-30', '2022-07-01', 1, '有打过相关比赛者优先', '篮球教练', 0, 0, 0, 3, 1, 131, '五险一金，双休', 0);
 INSERT INTO `recruit_list` VALUES (31, 'JAVA开发', NULL, 3, '杭州', '2022-05-04', '2022-05-31', 3, '获得过相关比赛奖励的优先；\n有相关实习经验的优先；\n能有一定的创新意识；\n具备良好的开发潜质。', 'JAVA开发', 0, 0, 0, 4, 0, 133, '薪资9K-13K；\n双休，国家法定节假日休；\n春假，秋假，公司不定期团建；\n五险一金，年终奖。', 3);
@@ -487,6 +485,7 @@ INSERT INTO `recruit_list` VALUES (52, '游戏开发', NULL, 2, '上海', '2022-
 INSERT INTO `recruit_list` VALUES (53, '测试运维', NULL, 3, '杭州', '2022-05-08', '2022-07-02', 5, '有相关经验者优先；\n能吃苦耐劳者优先；\n', '测试', 0, 0, 0, 4, 1, 135, '薪资8K-15K;\n五险一金；\n每日提供下午茶；\n正常双休；\n餐补和住宿补贴', 1);
 INSERT INTO `recruit_list` VALUES (54, '前端开发', NULL, 2, '北京', '2022-05-11', '2022-08-18', 3, '相关工作经历；\n熟练运用框架；\n较强开发能力；\n吃客肯干精神', 'JAVA前端', 0, 0, 0, 4, 1, 135, '薪资7K-12K；\n不定期公司聚会；\n周末双休，国家节假日休息', 2);
 INSERT INTO `recruit_list` VALUES (55, 'JAVA后端', NULL, 1, '杭州', '2022-05-12', '2022-06-15', 1, '相关专业者优先；\n有工作经历者优先；\n代码能力强者优先', '后端开发', 0, 0, 0, 4, 1, 135, '工资面议；\n正常节假日休息；\n公司年会福利多；\n餐补，交通补贴，住宿补贴', 2);
+INSERT INTO `recruit_list` VALUES (56, '抖音平台推广', NULL, 1, '杭州', '2022-05-20', '2022-06-23', 3, '有相关经验者优先；\n热爱抖音，善于推广者优先；\n善于交际者优先', '抖音推广', 0, 0, 0, 3, 1, 135, '薪资9K-13K；\n周末，法定节假日双休；\n下午餐，公司团建；\n五险一金', 1);
 
 -- ----------------------------
 -- Table structure for resumeinfo_list
@@ -530,13 +529,11 @@ CREATE TABLE `resumeinfo_list`  (
   `hr_id` int NULL DEFAULT NULL COMMENT 'Hr的用户id',
   `submit_time` date NULL DEFAULT NULL COMMENT '提交时间',
   PRIMARY KEY (`resume_Id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 73 CHARACTER SET = gb2312 COLLATE = gb2312_chinese_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of resumeinfo_list
 -- ----------------------------
-INSERT INTO `resumeinfo_list` VALUES (32, 24, '1', 110, '1', '1', '2022-04-27', 0, 1, 0, '共青团员', 3, '未婚', '510722199901192257', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '1', '1', '', NULL, '1', '1', '1', '1', '1', '', NULL, 116, NULL);
-INSERT INTO `resumeinfo_list` VALUES (33, 24, '1', 110, '2', '2', '2022-04-28', 0, 2, 0, '共青团员', 3, '离异', '510722199901192247', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, '2', '2', '', NULL, '2', '2', '2', '2', '2', '', NULL, 116, NULL);
 INSERT INTO `resumeinfo_list` VALUES (44, 29, '158', 130, '4654', '465456', '1985-01-01', 0, 45646, 0, '共青团员', 3, '未婚', '510722199901192247', NULL, NULL, NULL, NULL, '', NULL, '15896986598', NULL, NULL, '65465', '465465', '', NULL, '5465', '4654', '6546', '4654', '65465', '', NULL, 129, '2022-04-30');
 INSERT INTO `resumeinfo_list` VALUES (45, 29, '张文姚', 130, '上饶', '汉', '1990-01-01', 1, 24, 1, '共青团员', 3, '未婚', '362329199807095321', NULL, NULL, NULL, NULL, '', NULL, '17376573314', NULL, NULL, '理科', '1943172647', '', NULL, '你哦咯', '明', '明显', '明', '明明', '', NULL, 129, '2022-04-30');
 INSERT INTO `resumeinfo_list` VALUES (48, 30, '王三', 132, '648383', '好的', '1988-03-01', 1, 23, 3, '共青团员', 3, '未婚', '362329199807095235', NULL, NULL, NULL, NULL, '', NULL, '14253412589', NULL, NULL, '你的经常', '54468638', '', NULL, '恒大华府', '市场经济', '呼吸急促', '核算检查', '姐夫粗', '', NULL, 131, '2022-04-30');
@@ -555,6 +552,7 @@ INSERT INTO `resumeinfo_list` VALUES (62, 54, '汪洋', 137, '江西南昌', '�
 INSERT INTO `resumeinfo_list` VALUES (66, 55, '周成', 137, '江西上饶', '汉族', '1996-07-17', 0, 26, 0, '共青团员', 4, '未婚', '362329199607175236', NULL, 'CET-6', '四级', NULL, '', NULL, '15225632547', '江西省上饶市余干县', '南京大学', '软件工程', '1526587456@qq.com', '已毕业', '2022-06-15', '自律性强，自学性强。\n公司荣誉感强；\n乐观开朗，积极向上\n吃苦耐劳', '南京大学优秀毕业研究生；\n研究生国家奖学金；\n江苏省大学生程序竞赛金牌', '给母校开发了一款疫情下的校园通APP,\n用于院校和各部门之间的信息互递，\n累计下载量超过6K，目前累计更新5个版本，\n广泛收到好评。', '在A互联网大厂实习半年；\n在B互联网公司担任技术部门主管助理；\n在C公司一同参与研发核心技术；\n在D公司担任开发小组长', '发表一篇SCI；\n精通JAVA编程\n熟练使用后端框架', 'http://localhost:8810/march/file/7t6drv.jpg', NULL, 135, '2022-05-12');
 INSERT INTO `resumeinfo_list` VALUES (67, 55, '赵子龙', 137, '江西南昌', '汉族', '1998-07-08', 1, 24, 1, '党员', 3, '未婚', '362514199807088521', NULL, NULL, NULL, NULL, '', NULL, '17375632587', '江西省南昌市红谷滩区', '南昌大学', '计算机科学与技术', '1737542145@qq.com', '已毕业', NULL, '积极开朗\n吃苦耐劳\n刻苦钻研\n勤奋好学', '南昌市大学生程序竞赛一等奖\n省政府奖学金\n学业奖学金\n四六级证书', '无', '在一家上市公司担任技术开发人员', '熟练运用Java框架', '', NULL, 135, '2022-05-13');
 INSERT INTO `resumeinfo_list` VALUES (68, 53, '李生', 137, '浙江金华', '汉族', '1997-05-06', 0, 25, 0, '党员', 3, '未婚', '362329199705061423', NULL, NULL, NULL, NULL, '', NULL, '13758693214', '浙江省金华市义乌市佛堂镇', '浙江工商大学', '人工智能', '17658362356@qq.com', '已毕业', NULL, '肯吃苦\n有集体荣誉感\n喜欢创新', '国家奖学金\n四六级证书\n程序设计大赛金牌', '无', '在A公司实习半年', '熟练运用vue等框架\n代码能力强', '', NULL, 135, '2022-05-13');
+INSERT INTO `resumeinfo_list` VALUES (69, 56, '李红', 137, '浙江杭州', '汉族', '1996-05-03', 0, 26, 0, '共青团员', 3, '未婚', '330102199605032589', NULL, 'CET-6', '二级', NULL, '', NULL, '15845698521', '浙江省杭州市钱塘区东城大厦', '浙江传媒学院', '新媒体运营', '1598547412@qq.com', '已毕业', '2022-06-22', '吃苦耐劳\n创新型强\n开朗乐观\n集体荣誉感强', '国家奖学金\n学业奖学金\n抖音10W粉丝\n四六级证书', '为贵州山区的孩子通过抖音等平台获得发声的机会；\n以此让社会各界人士伸出了援助之手，精准扶贫', '在A公司曾担任品牌推广人；\n在B公司担任抖音主播，具有一定经验；\n', '新媒体创造大赛浙江赛区一等奖\n', '', NULL, 135, '2022-05-20');
 
 -- ----------------------------
 -- Table structure for user
